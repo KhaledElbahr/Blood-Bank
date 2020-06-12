@@ -1,0 +1,32 @@
+<mat-card *ngIf="patient">
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <mat-icon>persons</mat-icon>
+        <p>{{ patient.full_name }}</p>
+      </mat-list-item>
+      <mat-list-item role="listitem"
+        ><mat-icon>email</mat-icon>
+        <p>{{ patient.blood_group }}</p>
+        </mat-list-item>
+      <mat-list-item role="listitem"
+        ><mat-icon>work</mat-icon>
+        <p>{{ patient.phone }}</p>
+        </mat-list-item>
+      <mat-list-item role="listitem"
+        ><mat-icon>group</mat-icon>
+        <p>{{ patient.address }}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      class="btn-edit"
+      mat-raised-button
+      color="primary"
+      (click)="addRequest()"
+    >
+    <mat-icon>add</mat-icon>Add Request
+    </button>
+  </mat-card-actions>
+</mat-card>

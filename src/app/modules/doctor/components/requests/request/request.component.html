@@ -1,0 +1,132 @@
+<section class="request">
+  <div class="content-wrapper">
+    <div class="contact-section-heading">
+      <h2 class="heading-primary" mat-dialog-title>{{ pageTitle }}</h2>
+    </div>
+    <main>
+      <div class="form">
+        <mat-dialog-content [formGroup]="requestForm">
+          <!-- Product Type -->
+          <mat-form-field class="select-control">
+            <mat-label>Product Type</mat-label>
+            <mat-select formControlName="product_type">
+              <mat-option
+                *ngFor="let product_type of productTypes"
+                [value]="product_type.id"
+              >
+                {{ product_type.value | uppercase }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="product_type.hasError('required') && product_type.touched"
+            >
+              Product Type is required.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Blood Group -->
+          <mat-form-field class="select-control">
+            <mat-label>Blood Group</mat-label>
+            <mat-select formControlName="blood_group">
+              <mat-option
+                *ngFor="let blood_group of bloodGroups"
+                [value]="blood_group.id"
+              >
+                {{ blood_group.value | uppercase }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="blood_group.hasError('required') && blood_group.touched"
+            >
+              Blood Group is required.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Quantity -->
+          <div class="form-group">
+            <mat-form-field floatLabel="auto" class="form-control">
+              <mat-label>Quantity</mat-label>
+              <input
+                matInput
+                type="number"
+                class="control-input"
+                formControlName="quantity"
+                min="1"
+                required
+              />
+              <mat-error
+                *ngIf="
+                  quantity.invalid &&
+                  quantity.touched &&
+                  quantity.hasError('required')
+                "
+              >
+                Quantity is required.
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- Required Date -->
+          <div class="form-group">
+            <mat-form-field class="form-control">
+              <mat-label>Required Date</mat-label>
+              <input
+                matInput
+                class="control-input"
+                [min]="minDate"
+                [matDatepicker]="picker"
+                formControlName="required_date"
+                required
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <!-- Request Priority -->
+          <mat-form-field class="select-control">
+            <mat-label>Request Priority</mat-label>
+            <mat-select formControlName="priority">
+              <mat-option
+                *ngFor="let priority of priorities"
+                [value]="priority.id"
+              >
+                {{ priority.value | uppercase }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="priority.hasError('required') && priority.touched"
+            >
+              Request Priority is required.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-dialog-actions>
+            <button
+              class="mat-raised-button mat-primary"
+              [title]="
+                requestForm.valid
+                  ? 'Save your entered data'
+                  : 'Disabled until the form data is valid'
+              "
+              (click)="onSave()"
+              [disabled]="!requestForm.valid"
+            >
+              Save
+            </button>
+            <button
+              class="mat-raised-button mat-accent"
+              title="Cancel your data"
+              (click)="onCancel()"
+            >
+              Cancel
+            </button>
+          </mat-dialog-actions>
+        </mat-dialog-content>
+      </div>
+    </main>
+  </div>
+</section>

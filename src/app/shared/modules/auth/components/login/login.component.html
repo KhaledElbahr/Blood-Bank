@@ -1,0 +1,63 @@
+<section class="sign-in">
+  <div class="content-wrapper">
+    <div class="lock-icon"></div>
+    <div class="contact-section-heading">
+      <h1 class="heading-primary">Sign in</h1>
+    </div>
+    <main>
+      <div class="form-wrapper">
+        <form [formGroup]="loginForm" (ngSubmit)="onSingIn()">
+          <!-- User Name -->
+          <div class="form-group">
+            <mat-form-field appearance="outline" class="form-control">
+              <mat-label>User Name</mat-label>
+              <input
+                matInput
+                type="text"
+                class="control-input"
+                formControlName="username"
+                placeholder="Enter Your Name"
+                required
+              />
+            </mat-form-field>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <mat-form-field appearance="outline" class="form-control">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                class="control-input"
+                formControlName="password"
+                [type]="hide ? 'password' : 'text'"
+                required
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                type="button"
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+
+          <button
+            mat-raised-button
+            class="btn"
+            type="submit"
+            [disabled]="!loginForm.valid"
+          >
+            Sign In
+          </button>
+        </form>
+      </div>
+    </main>
+  </div>
+</section>

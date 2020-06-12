@@ -1,1 +1,127 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$Blood-Bank-primary: mat-palette($mat-indigo);
+$Blood-Bank-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$Blood-Bank-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$Blood-Bank-theme: mat-light-theme($Blood-Bank-primary, $Blood-Bank-accent, $Blood-Bank-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($Blood-Bank-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+// Layout Style
+mat-sidenav {
+  width: 300px;
+  padding-top: 70px;
+  position: fixed;
+  z-index: 3;
+}
+
+mat-sidenav-container {
+  height: 100%;
+  padding-top: 70px;
+}
+
+mat-sidenav-content {
+  padding: 20px;
+}
+
+// header Style
+mat-toolbar {
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 -10px 10px 10px rgba(0, 0, 0, .5);
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-icon-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 14px;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+}
+
+ul {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+
+  li {
+    list-style: none;
+  }
+}
+
+// Sidebar Style
+.mat-btn-nav {
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all .3s;
+  color: rgba(0,0,0,.87);
+  &.active {
+    color: #3f51b5 !important;
+    background-color: transparent !important;
+  }
+}
+
+.profile-card {
+  text-align: center;
+  padding: 20px;
+}
+
+// Footer Style
+.footer {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  color: #000;
+  background-color: #f2f2f2;
+  padding: 1rem 2.8rem;
+  margin: 0 auto;
+  z-index: 12;
+}
+
+.copyright,
+.signature {
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.mat-icon-favorite {
+  margin: 0 5px;
+}
+

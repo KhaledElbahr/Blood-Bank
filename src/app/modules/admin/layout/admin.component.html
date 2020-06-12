@@ -1,0 +1,20 @@
+<app-header
+  [sidebar]="sideBarOpen"
+  (toggleSideBarForMe)="sideBarToggler()"
+></app-header>
+<mat-sidenav-container>
+  <mat-sidenav
+    class="sidenav"
+    fixedInViewport="true"
+    mode="side"
+    [opened]="sideBarOpen"
+  >
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<app-footer></app-footer>

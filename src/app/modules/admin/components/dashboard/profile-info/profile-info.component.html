@@ -1,0 +1,37 @@
+<mat-card *ngIf="admin">
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <mat-icon>persons</mat-icon>
+        <p>{{ admin.full_name }}</p>
+      </mat-list-item>
+      <mat-list-item role="listitem"
+        ><mat-icon>email</mat-icon>
+        <p>{{ admin.email }}</p>
+      </mat-list-item>
+      <mat-list-item role="listitem"
+        ><mat-icon>work</mat-icon>
+        <p>{{ admin.phone }}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      class="btn-edit"
+      mat-raised-button
+      color="primary"
+      (click)="onEdit(admin)"
+    >
+      Edit Profile
+    </button>
+
+    <button
+      class="btn-edit"
+      mat-raised-button
+      color="accent"
+      (click)="onResetPassword()"
+    >
+      Reset Password
+    </button>
+  </mat-card-actions>
+</mat-card>

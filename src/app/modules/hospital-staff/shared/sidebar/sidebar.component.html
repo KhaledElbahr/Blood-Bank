@@ -1,0 +1,23 @@
+<mat-nav-list>
+  <div class="profile-card" *ngIf="hospitalStaff">
+    <div class="header">
+      <h2>Welcome {{ hospitalStaff.first_name | titlecase }}</h2>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <a
+    mat-list-item
+    class="mat-btn-nav"
+    routerLinkActive="active"
+    routerLink="dashboard"
+    routerLinkActiveOptions="{exact: true}"
+    >Dashboard</a
+  >
+  <a
+    mat-list-item
+    class="mat-btn-nav"
+    routerLinkActive="active"
+    routerLink="patients"
+    >Patients</a
+  >
+</mat-nav-list>

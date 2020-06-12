@@ -1,0 +1,217 @@
+<section class="edit-profile" *ngIf="user">
+  <div class="content-wrapper">
+    <div class="contact-section-heading">
+      <h2 class="heading-primary" mat-dialog-title>{{ pageTitle }}</h2>
+    </div>
+    <main>
+      <div class="edit-profile-form">
+        <!-- <form > -->
+        <mat-dialog-content [formGroup]="userForm">
+          <div class="row">
+            <!-- First Name -->
+            <div class="form-group">
+              <mat-form-field floatLabel="auto" class="form-control">
+                <mat-label>First Name</mat-label>
+                <input
+                  matInput
+                  class="control-input"
+                  type="text"
+                  formControlName="first_name"
+                  required
+                />
+                <mat-error
+                  *ngIf="
+                    first_name.invalid &&
+                    first_name.touched &&
+                    first_name.hasError('required')
+                  "
+                >
+                  First Name is required.
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <!-- Last Name -->
+            <div class="form-group">
+              <mat-form-field floatLabel="auto" class="form-control">
+                <mat-label>Last Name</mat-label>
+                <input
+                  matInput
+                  class="control-input"
+                  type="text"
+                  formControlName="last_name"
+                  required
+                />
+                <mat-error
+                  *ngIf="
+                    last_name.invalid &&
+                    last_name.touched &&
+                    last_name.hasError('required')
+                  "
+                >
+                  Last Name is required.
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <!-- Gender -->
+          <div class="form-group">
+            <mat-radio-group
+              formControlName="gender"
+              aria-label="Select gender"
+            >
+              <mat-radio-button
+                type="radio"
+                *ngFor="let gender of genders"
+                [value]="gender.id"
+                >{{ gender.value | uppercase }}</mat-radio-button
+              >
+              <mat-error *ngIf="gender.hasError('required') && gender.touched">
+                Gender is required.
+              </mat-error>
+            </mat-radio-group>
+          </div>
+          <!-- User Type -->
+          <mat-form-field class="select-control">
+            <mat-label>User Type</mat-label>
+            <mat-select formControlName="user_type">
+              <mat-option
+                *ngFor="let user_type of userTypes"
+                [value]="user_type.id"
+              >
+                {{ user_type.value | uppercase }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="user_type.hasError('required') && user_type.touched"
+            >
+              User Type is required.
+            </mat-error>
+          </mat-form-field>
+          <!-- E-mail Address -->
+          <div class="form-group">
+            <mat-form-field floatLabel="auto" class="form-control">
+              <mat-label>Email Address</mat-label>
+              <input
+                matInput
+                class="control-input"
+                formControlName="email"
+                placeholder="Ex. Ahmed@example.com"
+              />
+              <mat-error *ngIf="email.hasError('required') && email.touched">
+                Email Address is required.
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  email.hasError('email') &&
+                  email.invalid &&
+                  !email.hasError('required')
+                "
+              >
+                Please enter a valid email address
+              </mat-error>
+            </mat-form-field>
+            <div *ngIf="email.valid && email.dirty && email.touched">
+              <small class="help-block">Looks good!</small>
+            </div>
+          </div>
+          <!-- Contact Phone -->
+          <div class="form-group">
+            <mat-form-field hintLabel="Max 11 characters" class="form-control">
+              <mat-label>Phone Number</mat-label>
+              <input
+                matInput
+                class="control-input"
+                formControlName="phone"
+                #phoneInput
+                maxLength="11"
+                placeholder="@01"
+              />
+              <mat-hint align="end"
+                >{{ phoneInput.value?.length || 0 }}/11</mat-hint
+              >
+            </mat-form-field>
+            <div *ngIf="phone.valid && phone.dirty && phone.touched">
+              <small class="help-block">Looks good!</small>
+            </div>
+          </div>
+
+          <mat-dialog-actions>
+            <button
+              class="mat-raised-button mat-primary"
+              [title]="
+                userForm.valid
+                  ? 'Save your entered data'
+                  : 'Disabled until the form data is valid'
+              "
+              (click)="onSave()"
+              [disabled]="!userForm.valid"
+            >
+              Save
+            </button>
+            <button
+              class="mat-raised-button mat-accent"
+              title="Cancel your data"
+              (click)="onCancel()"
+            >
+              Cancel
+            </button>
+          </mat-dialog-actions>
+        </mat-dialog-content>
+      </div>
+    </main>
+  </div>
+</section>
+
+
+<!-- User Type -->
+<!-- <div class="form-group">
+        <label for="usertype" class="control-label"
+          >User Type
+          <select
+            id="usertype"
+            formControlName="usertype"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                usertype.invalid && (usertype.dirty || usertype.touched),
+              'is-valid': usertype.valid && (usertype.dirty || usertype.touched)
+            }"
+          >
+            <option [ngValue]="null" disabled>--Select User Type--</option>
+            <option
+              *ngFor="let usertype of usertypes; let i = index"
+              [ngValue]="usertype.id"
+              >{{ usertype.value }}</option
+            >
+          </select>
+        </label>
+        <div
+          *ngIf="usertype.valid && (usertype.dirty || usertype.touched)"
+          class="help-block"
+        >
+          Looks good!
+        </div>
+        <div
+          *ngIf="usertype.errors?.required && usertype.touched"
+          class="help-block"
+        >
+          User Type is required.
+        </div>
+      </div> -->
+<!-- Departent -->
+<!-- <div class="form-group">
+        <label for="department"
+          >Department
+          <select
+            id="department"
+            formControlName="department"
+            class="form-control"
+          >
+            <option
+              *ngFor="let department of departments"
+              [ngValue]="department"
+              >{{ department }}</option
+            >
+          </select>
+        </label>
+      </div> -->

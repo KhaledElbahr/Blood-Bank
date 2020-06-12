@@ -1,0 +1,36 @@
+.not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+
+  .card-bady {
+    position: relative;
+    max-width: 29em;
+    background-color: rgba(255, 255, 255, .9);
+    border-radius: .25rem;
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, .25);
+    padding: 2rem 2rem 1rem;
+    margin: 0 auto 2rem;
+    border: 1px solid #e8e8e8;
+
+    .card-title {
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      padding: 0.25rem;
+      margin: 0 0 1rem;
+      line-height: 1.5;
+      font-size: 1.6rem !important;
+    }
+  }
+}
+
+h1 img {
+  margin-right: .75rem;
+  float: left;
+  border-color: #ff9000;
+  background-color: rgba(255, 255, 255, .9);
+  clear: both;
+}

@@ -1,0 +1,31 @@
+<h1>DashBoard</h1>
+<br />
+<mat-divider></mat-divider>
+<br />
+<mat-grid-list [cols]="columnNum" rowHeight="65px" gutterSize="20px">
+  <mat-grid-tile [colspan]="cols">
+    <mat-card>
+      <p class="card-category">VOLUNTEERS</p>
+      <!-- <h3 class="card-title">{{ state.volunteers }}</h3> -->
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="cols">
+    <mat-card>
+      <p class="card-category">ALL ARTICLES</p>
+      <!-- <h3 class="card-title">{{ state.articles }}</h3> -->
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="cols">
+    <mat-card>
+      <p class="card-category">CONTACTS</p>
+      <!-- <h3 class="card-title">{{ state.contacts }}</h3> -->
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+<br />
+<mat-divider></mat-divider>
+<br />
+<div class="profile">
+  <h2>Profile info:</h2>
+  <hstaff-profile-info></hstaff-profile-info>
+</div>

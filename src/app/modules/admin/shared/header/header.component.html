@@ -1,0 +1,48 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button
+      (click)="toggleSideBar()"
+    >
+      <mat-icon *ngIf="!sidebar" aria-label="Side bar toggle icon"
+        >menu</mat-icon
+      >
+      <mat-icon *ngIf="sidebar" aria-label="Side bar toggle icon">
+        close</mat-icon
+      >
+    </button>
+    <mat-icon
+      class="mat-icon-logo"
+      aria-hidden="false"
+      aria-label="Blood-Bank"
+      routerLink="/home"
+      routerLinkActive="active"
+      role="img"
+    >
+      <h2>Blood Bank</h2>
+    </mat-icon>
+    <span class="example-spacer"></span>
+    <div>
+      <ul>
+        <li>
+          <button mat-icon-button (click)="toggleThemeColor()">
+            <mat-icon>emoji_objects</mat-icon>
+          </button>
+        </li>
+        <li>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>person_outline</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>exit_to_app</mat-icon>
+              logout
+            </button>
+          </mat-menu>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
