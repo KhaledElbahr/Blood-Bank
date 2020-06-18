@@ -20,9 +20,9 @@ export class BoodGroupService {
     private http: HttpClient,
     private auth: AuthService) { }
 
-    getBloodGroups(): Observable<{id: number, value: string}[]> {
-      return this.http.get<{id: number, value: string}[]>(`${this.url}`, { headers: this.headers }).pipe(
-        map((data: {id: number, value: string}[]) => {
+    getBloodGroups(): Observable<{ id: number, value: string }[]> {
+      return this.http.get<{ id: number, value: string }[]>(`${this.url}`, { headers: this.headers }).pipe(
+        map((data: { id: number, value: string }[]) => {
           console.log(data);
           return data;
         }),

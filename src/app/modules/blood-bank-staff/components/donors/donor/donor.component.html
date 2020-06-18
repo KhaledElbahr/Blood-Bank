@@ -1,0 +1,188 @@
+<section class="edit-profile">
+  <div class="content-wrapper">
+    <div class="contact-section-heading">
+      <h2 class="heading-primary" mat-dialog-title>{{ pageTitle }}</h2>
+    </div>
+    <main>
+      <div class="edit-profile-form">
+        <mat-dialog-content>
+          <form [formGroup]="donorForm">
+            <div fxLayout="row" fxLayoutGap="20px">
+              <!-- First Name -->
+              <div class="form-group" fxFlex="50">
+                <mat-form-field floatLabel="auto" class="form-control">
+                  <mat-label>First Name</mat-label>
+                  <input
+                    matInput
+                    class="control-input"
+                    type="text"
+                    formControlName="first_name"
+                    placeholder="Donor's First Name"
+                    required
+                  />
+                </mat-form-field>
+              </div>
+              <!-- Last Name -->
+              <div class="form-group" fxFlex="50">
+                <mat-form-field floatLabel="auto" class="form-control">
+                  <mat-label>Last Name</mat-label>
+                  <input
+                    matInput
+                    class="control-input"
+                    type="text"
+                    formControlName="last_name"
+                    placeholder="Donor's Last Name"
+                    required
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- Civil ID -->
+            <div class="form-group">
+              <mat-form-field floatLabel="auto" class="form-control">
+                <mat-label>Civil ID</mat-label>
+                <input
+                  matInput
+                  class="control-input"
+                  type="text"
+                  formControlName="ssn"
+                  placeholder="Enter Donor's civil Id"
+                  maxLength="14"
+                  #ssnInput
+                  required
+                />
+                <mat-hint align="end"
+                  >{{ ssnInput.value?.length || 0 }}/14</mat-hint
+                >
+                <mat-error
+                  *ngIf="
+                    ssn.invalid && ssn.touched && !ssn.hasError('required')
+                  "
+                >
+                  Please enter a valid Civil ID
+                </mat-error>
+                <mat-error *ngIf="ssn.hasError('required')">
+                  Civil Id is required
+                </mat-error>
+              </mat-form-field>
+              <div *ngIf="ssn.valid && ssn.dirty && ssn.touched">
+                <small class="help-block">Looks good!</small>
+              </div>
+            </div>
+            <!-- Gender -->
+            <div class="form-group">
+              <mat-radio-group
+                formControlName="gender"
+                aria-label="Select gender"
+              >
+                <mat-radio-button
+                  type="radio"
+                  *ngFor="let gender of genders"
+                  [value]="gender.id"
+                  >{{ gender.value | uppercase }}</mat-radio-button
+                >
+                <mat-error
+                  *ngIf="gender.hasError('required') && gender.touched"
+                >
+                  Gender is required.
+                </mat-error>
+              </mat-radio-group>
+            </div>
+            <!-- Blood Group -->
+            <mat-form-field class="select-control">
+              <mat-label>Blood Group</mat-label>
+              <mat-select formControlName="blood_group" required>
+                <mat-option
+                  *ngFor="let blood_group of bloodGroups"
+                  [value]="blood_group.id"
+                >
+                  {{ blood_group.value | uppercase }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <!-- E-mail Address -->
+            <div class="form-group">
+              <mat-form-field floatLabel="auto">
+                <mat-label>E-mail Address</mat-label>
+                <input
+                  matInput
+                  formControlName="email"
+                  placeholder="@ex.Ahmed"
+                />
+                <mat-error
+                  *ngIf="email.hasError('email') && !email.hasError('required')"
+                >
+                  Please enter a valid email address
+                </mat-error>
+              </mat-form-field>
+              <div
+                *ngIf="email.valid && (email.dirty || email.touched)"
+                class="help-block"
+              >
+                <small>Looks good!</small>
+              </div>
+            </div>
+            <!-- Phone Number -->
+            <div class="form-group">
+              <mat-form-field
+                hintLabel="Max 11 characters"
+                class="form-control"
+              >
+                <mat-label>Phone Number</mat-label>
+                <input
+                  matInput
+                  class="control-input"
+                  formControlName="phone"
+                  #phoneInput
+                  maxLength="11"
+                  placeholder="@ex.01"
+                />
+                <mat-hint align="end"
+                  >{{ phoneInput.value?.length || 0 }}/11</mat-hint
+                >
+              </mat-form-field>
+              <div *ngIf="phone.valid && phone.dirty && phone.touched">
+                <small class="help-block">Looks good!</small>
+              </div>
+            </div>
+            <!-- Address -->
+            <!-- <div class="form-group">
+              <mat-form-field floatLabel="auto" class="form-control">
+                <mat-label>Address</mat-label>
+                <input
+                  matInput
+                  class="control-input"
+                  type="text"
+                  formControlName="address"
+                  placeholder="Enter Donor's address"
+                />
+              </mat-form-field>
+            </div> -->
+
+            <mat-dialog-actions>
+              <button
+                class="mat-raised-button mat-primary"
+                (click)="onSave()"
+                [title]="
+                  donorForm.valid
+                    ? 'Save your entered data'
+                    : 'Disabled until the form data is valid'
+                "
+                [disabled]="!donorForm.valid"
+              >
+                Save
+              </button>
+              <button
+                class="mat-raised-button mat-accent"
+                title="Cancel your data"
+                (click)="onCancel()"
+              >
+                Cancel
+              </button>
+            </mat-dialog-actions>
+          </form>
+        </mat-dialog-content>
+      </div>
+    </main>
+  </div>
+</section>

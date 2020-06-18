@@ -11,7 +11,6 @@ import { User } from 'src/app/core/models/user';
 export class AdminService {
   url = 'http://localhost:8000/api/staff';
   ACCESS_TOKEN: string = this.auth.ACCESS_TOKEN;
-  USER_ID: number = this.auth.USER_ID;
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
     Authorization: `Bearer ${this.ACCESS_TOKEN}`
@@ -20,16 +19,6 @@ export class AdminService {
   constructor(
     private http: HttpClient,
     private auth: AuthService) { }
-
-  // getAdmin(): Observable<User> {
-  //   return this.http.get<User>(`${this.url}/${this.USER_ID}`, { headers: this.headers }).pipe(
-  //     map((data: User) => {
-  //       console.log(data);
-  //       return data;
-  //     }),
-  //     catchError(this.handleError)
-  //   );
-  // }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.url}`, { headers: this.headers }).pipe(
@@ -40,10 +29,10 @@ export class AdminService {
       catchError(this.handleError)
     );
   }
-
+  // return of(this.initializeUser());
   getUser(id: number): Observable<User> {
     if (id === 0) {
-      id = null;
+      return of(this.initializeUser());
     }
     return this.http.get<User>(`${this.url}/${id}`, { headers: this.headers }).pipe(
       map((data: User) => {
@@ -66,14 +55,24 @@ export class AdminService {
   }
 
   updateUser(user: User): Observable<User> {
-    // return of('Not Implemented Yet!!!');
-    return this.http.put<User>(`${this.url}/${user.id}`, user, { headers: this.headers }).pipe(
-      map((data: any) => {
-        console.log(data);
-        return data;
-      }),
-      catchError(this.handleError)
-    );
+    return this.http.put<User>(`${this.url}/${user.id}`, null,
+      {
+        headers: this.headers,
+        params: {
+          first_name: user.first_name,
+          last_name: user.last_name,
+          gender: `${user.gender}`,
+          phone: user.phone,
+          email: user.email,
+          user_type_id: `${user.user_id}`
+        }
+      }).pipe(
+        map((data: any) => {
+          console.log(data);
+          return data;
+        }),
+        catchError(this.handleError)
+      );
   }
 
   deleteUser(uid: number): Observable<any> {

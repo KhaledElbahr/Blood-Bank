@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Request } from './../models/request';
 import { of, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from 'src/app/shared/modules/auth/services/auth.service';
 import { map, catchError } from 'rxjs/operators';
+import { Request } from './../../../core/models/request';
 
 @Injectable({
   providedIn: 'root'

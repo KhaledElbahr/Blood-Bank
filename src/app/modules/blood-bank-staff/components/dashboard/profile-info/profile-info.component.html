@@ -1,1 +1,37 @@
-<p>profile-info works!</p>
+<mat-card *ngIf="bbstaff">
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <mat-icon>persons</mat-icon>
+        <p>{{ bbstaff.full_name }}</p>
+      </mat-list-item>
+      <mat-list-item role="listitem"
+        ><mat-icon>email</mat-icon>
+        <p>{{ bbstaff.email }}</p>
+      </mat-list-item>
+      <mat-list-item role="listitem"
+        ><mat-icon>work</mat-icon>
+        <p>{{ bbstaff.phone }}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      class="btn-edit"
+      mat-raised-button
+      color="primary"
+      (click)="onEdit(bbstaff)"
+    >
+      Edit Profile
+    </button>
+
+    <button
+      class="btn-edit"
+      mat-raised-button
+      color="accent"
+      (click)="onResetPassword()"
+    >
+      Reset Password
+    </button>
+  </mat-card-actions>
+</mat-card>

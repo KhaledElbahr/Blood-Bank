@@ -1,0 +1,34 @@
+<mat-card *ngIf="donor">
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <mat-icon>persons</mat-icon>
+        <p>{{ donor.full_name }}</p>
+      </mat-list-item>
+      <mat-list-item role="listitem"
+        ><mat-icon>email</mat-icon>
+        <p>{{ donor.blood_group }}</p>
+      </mat-list-item>
+      <mat-list-item role="listitem"
+        ><mat-icon>work</mat-icon>
+        <p>{{ donor.phone }}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="addActivity()">
+      ADD Activity
+    </button>
+    <button
+      class="btn-edit"
+      mat-raised-button
+      color="primary"
+      (click)="updateDonor(donor)"
+    >
+      Update Donor
+    </button>
+    <button mat-icon-button color="warn" (click)="onDelete(donor)">
+      Delete Donor
+    </button>
+  </mat-card-actions>
+</mat-card>

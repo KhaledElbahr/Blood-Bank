@@ -1,0 +1,12 @@
+export interface Donor {
+  id: number;
+  first_name: string;
+  last_name: string;
+  full_name: string;
+  gender: {id: number, value: string};
+  phone: string;
+  email?: string;
+  ssn: string;
+  blood_group: { blood_group_id: number, value: string };
+  // address?: string;
+}

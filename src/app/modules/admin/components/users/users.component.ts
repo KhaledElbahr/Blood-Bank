@@ -21,10 +21,11 @@ export class UsersComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  constructor(private route: ActivatedRoute,
-              private router: Router,
-              public dialog: MatDialog,
-              private adminService: AdminService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    public dialog: MatDialog,
+    private adminService: AdminService) { }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -32,7 +33,7 @@ export class UsersComponent implements OnInit {
   }
 
   onCreate(): void {
-    this.router.navigate(['./user'], {queryParams: {id: 0, 'add-user': true}, relativeTo: this.route});
+    this.router.navigate(['./user'], { queryParams: { id: 0, 'add-user': true }, relativeTo: this.route });
     const dialogRef = this.dialog.open(UserComponent, {
       disableClose: true,
       autoFocus: true,
@@ -43,7 +44,7 @@ export class UsersComponent implements OnInit {
 
   onEdit(user: User): void {
     const id = user.id;
-    this.router.navigate(['./user'], {queryParams: {id: `${id}`, 'enable-edit': true}, relativeTo: this.route});
+    this.router.navigate(['./user'], { queryParams: { id: `${id}`, 'enable-edit': true }, relativeTo: this.route });
     const dialogRef = this.dialog.open(UserComponent, {
       disableClose: true,
       autoFocus: true,

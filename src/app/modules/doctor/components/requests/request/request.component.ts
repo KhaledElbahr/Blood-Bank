@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Request } from './../../../models/request';
+import { Request } from './../../../../../core/models/request';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequestService } from './../../../services/request.service';
 import { MatDialogRef } from '@angular/material/dialog';

@@ -12,11 +12,11 @@ const routes: Routes = [
     canLoad: [LoginAuthGuard],
     loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule),
   },
-  // {
-  //   path: 'blood-bank',
-  //   canLoad: [LoginAuthGuard],
-  //   loadChildren: () => import('./modules/blood-bank-staff/blood-bank-staff.module').then(m => m.BloodBankStaffModule),
-  // },
+  {
+    path: 'blood-bank',
+    canLoad: [LoginAuthGuard],
+    loadChildren: () => import('./modules/blood-bank-staff/blood-bank-staff.module').then(m => m.BloodBankStaffModule),
+  },
   {
     path: 'doctor',
     canLoad: [LoginAuthGuard],

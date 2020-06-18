@@ -1,0 +1,115 @@
+<section class="edit-profile">
+  <div class="content-wrapper">
+    <div class="contact-section-heading">
+      <h2 class="heading-primary" mat-dialog-title>{{ pageTitle }}</h2>
+    </div>
+    <main>
+      <div class="edit-profile-form">
+        <mat-dialog-content>
+          <form [formGroup]="bloodProductForm">
+            <!-- Product Code -->
+            <div class="form-group">
+              <mat-form-field floatLabel="auto">
+                <mat-label>Product Code</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  formControlName="barcode"
+                  placeholder="Product Barcode..."
+                  required
+                />
+                <mat-error
+                  *ngIf="
+                    barcode.invalid &&
+                    barcode.touched &&
+                    !barcode.hasError('required')
+                  "
+                >
+                  Please enter a valid Product Code.
+                </mat-error>
+                <mat-error *ngIf="barcode.hasError('required')">
+                  Product Code is required.
+                </mat-error>
+              </mat-form-field>
+              <div
+                *ngIf="barcode.valid && (barcode.dirty || barcode.touched)"
+                class="help-block"
+              >
+                <small>Looks good!</small>
+              </div>
+            </div>
+            <!-- Type of Donation -->
+            <div class="form-group">
+              <mat-radio-group
+                formControlName="product_type"
+                aria-label="Select an option"
+              >
+                <mat-radio-button
+                  type="radio"
+                  *ngFor="let product_type of productTypes"
+                  [value]="product_type.id"
+                  >{{ product_type.value | uppercase }}</mat-radio-button
+                >
+                <mat-error
+                  *ngIf="
+                    product_type.hasError('required') && product_type.touched
+                  "
+                >
+                  Product Type is required
+                </mat-error>
+              </mat-radio-group>
+            </div>
+            <!-- Storage Location -->
+            <div class="form-group">
+              <mat-form-field>
+                <mat-label>Storage Location</mat-label>
+                <mat-select formControlName="storage_location">
+                  <mat-option
+                    *ngFor="let storage_location of storageLocs"
+                    [value]="storage_location.id"
+                  >
+                    {{ storage_location.value }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <!-- Blood Group -->
+            <mat-form-field class="select-control">
+              <mat-label>Blood Group</mat-label>
+              <mat-select formControlName="blood_group" required>
+                <mat-option
+                  *ngFor="let blood_group of bloodGroups"
+                  [value]="blood_group.id"
+                >
+                  {{ blood_group.value | uppercase }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-dialog-actions>
+              <button
+                class="mat-raised-button mat-primary"
+                (click)="onSave()"
+                [title]="
+                  bloodProductForm.valid
+                    ? 'Save your entered data'
+                    : 'Disabled until the form data is valid'
+                "
+                [disabled]="!bloodProductForm.valid"
+              >
+                Save
+              </button>
+              <button
+                class="mat-raised-button mat-accent"
+                title="Cancel your data"
+                (click)="onCancel()"
+              >
+                Cancel
+              </button>
+            </mat-dialog-actions>
+          </form>
+        </mat-dialog-content>
+      </div>
+    </main>
+  </div>
+</section>

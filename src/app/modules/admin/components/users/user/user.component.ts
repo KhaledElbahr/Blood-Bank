@@ -16,8 +16,8 @@ export class UserComponent implements OnInit {
   userForm: FormGroup;
   user: User;
   genders = [
-    {id: '1', value: 'male'},
-    {id: '2', value: 'female'}
+    {id: 1, value: 'male'},
+    {id: 2, value: 'female'}
   ];
   userTypes = [
     { id: 1, value: 'Admin' },

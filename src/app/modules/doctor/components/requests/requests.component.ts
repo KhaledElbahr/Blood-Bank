@@ -4,8 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { RequestComponent } from './request/request.component';
-import { Request } from './../../models/request';
 import { RequestService } from '../../services/request.service';
+import { Request } from './../../../../core/models/request';
 
 @Component({
   selector: 'app-requests',
