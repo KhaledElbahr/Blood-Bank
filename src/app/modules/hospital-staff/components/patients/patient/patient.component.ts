@@ -17,10 +17,19 @@ export class PatientComponent implements OnInit {
   patientForm: FormGroup;
   patient: Patient;
   genders = [
-    { id: '1', value: 'male' },
-    { id: '2', value: 'female' }
+    { id: 1, value: 'male' },
+    { id: 2, value: 'female' }
   ];
-  bloodGroups: { id: number, value: string }[];
+  bloodGroups = [
+    { id: 1, value: 'O+' },
+    { id: 2, value: 'O-' },
+    { id: 3, value: 'A+' },
+    { id: 4, value: 'A-' },
+    { id: 5, value: 'B+' },
+    { id: 6, value: 'B-' },
+    { id: 7, value: 'AB+' },
+    { id: 8, value: 'AB-' }
+  ];
 
   constructor(
     private fb: FormBuilder,
@@ -31,16 +40,17 @@ export class PatientComponent implements OnInit {
     public dialogRef: MatDialogRef<PatientComponent>
   ) { }
 
+  // , Validators.pattern('(2|3)[0-9][1-9][0-1][1-9][0-3][1-9](01|02|03|04|11|12|13|14|15|16|17|18|19|21|22|23|24|25|26|27|28|29|31|32|33|34|35|88)\d\d\d\d\d)')
+
   ngOnInit(): void {
-    this.getBloodGroups();
     this.patientForm = this.fb.group({
       first_name: [null, Validators.required],
       last_name: [null, Validators.required],
-      ssn: [null, [Validators.required, Validators.max(14), Validators.min(14), Validators.maxLength(14)]],
+      ssn: [null, [Validators.required, Validators.maxLength(14)]],
       gender: [null, Validators.required],
-      blood_group: [null, Validators.required],
+      blood_group_id: [null, Validators.required],
       phone: [null, [Validators.required, Validators.maxLength(11)]],
-      address: [null, Validators.required]
+      address: [null]
     });
 
     // Read the Patient Id from the route parameter
@@ -56,12 +66,12 @@ export class PatientComponent implements OnInit {
   get last_name() { return this.patientForm.get('last_name'); }
   get ssn() { return this.patientForm.get('ssn'); }
   get gender() { return this.patientForm.get('gender'); }
-  get blood_group() { return this.patientForm.get('blood_group'); }
+  get blood_group_id() { return this.patientForm.get('blood_group_id'); }
   get phone() { return this.patientForm.get('phone'); }
   get address() { return this.patientForm.get('address'); }
 
   getPatient(id: number): void {
-    this.patientService.getPatient(id).subscribe({
+    this.patientService.getPatientById(id).subscribe({
       next: (patient: Patient) => {
         this.displayPatient(patient);
       },
@@ -83,8 +93,8 @@ export class PatientComponent implements OnInit {
         first_name: this.patient.first_name,
         last_name: this.patient.last_name,
         ssn: this.patient.ssn,
-        gender: this.patient.gender.id,
-        blood_group: this.patient.blood_group.id,
+        gender: this.patient.gender,
+        blood_group_id: this.patient.blood_group_id,
         phone: this.patient.phone,
         address: this.patient.address,
       }
@@ -95,7 +105,7 @@ export class PatientComponent implements OnInit {
     if (this.patientForm.valid && this.patientForm.dirty) {
       const p = { ...this.patient, ...this.patientForm.value };
       if (p.id === 0) {
-        this.patientService.addPatient(p).subscribe(
+        this.patientService.addPatient(this.patientForm.value).subscribe(
           data => {
             this.onClose();
             // this.notifyService.notify(data.message);
@@ -135,13 +145,13 @@ export class PatientComponent implements OnInit {
   }
 
 
-  getBloodGroups() {
-    this.bloodService.getBloodGroups().subscribe(
-      (data: { id: number, value: string }[]) => {
-        console.log(data);
-        this.bloodGroups = data;
-      },
-      err => console.log(err)
-    );
-  }
+  // getBloodGroups() {
+  //   this.bloodService.getBloodGroups().subscribe(
+  //     (data: { id: number, value: string }[]) => {
+  //       console.log(data);
+  //       this.bloodGroups = data;
+  //     },
+  //     err => console.log(err)
+  //   );
+  // }
 }

@@ -49,12 +49,12 @@ export class ApprovedRequestsComponent implements OnInit {
   }
 
   getApprovedRequests() {
-    this.requestsService.getApprovedRequests().subscribe(
-      (data: Request[]) => {
-        this.requests = data;
-        this.dataSource = new MatTableDataSource<Request>(this.requests);
-      },
-      err => console.log(err)
-    );
+    // this.requestsService.getApprovedRequests().subscribe(
+    //   (data: Request[]) => {
+    //     this.requests = data;
+    //     this.dataSource = new MatTableDataSource<Request>(this.requests);
+    //   },
+    //   err => console.log(err)
+    // );
   }
 }

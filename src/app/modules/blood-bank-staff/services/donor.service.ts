@@ -20,11 +20,24 @@ export class DonorService {
     private http: HttpClient,
     private auth: AuthService) { }
 
-  getDonor(ssnOrId: number | string): Observable<Donor> {
-    if (ssnOrId === 0) {
+  getDonor(Id: number): Observable<Donor> {
+    if (Id === 0) {
       return of(this.initializeDonor());
     }
-    return this.http.get<Donor>(`${this.url}/${ssnOrId}`, { headers: this.headers }).pipe(
+    return this.http.get<Donor>(`${this.url}/${Id}`, { headers: this.headers }).pipe(
+      map((data: Donor) => {
+        console.log(data);
+        return data;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  getDonorBySSN(ssn: string): Observable<Donor> {
+    return this.http.get<Donor>(`http://localhost:8000/api/find_donor`, {
+      headers: this.headers,
+      params: { ssn }
+    }).pipe(
       map((data: Donor) => {
         console.log(data);
         return data;
@@ -52,6 +65,8 @@ export class DonorService {
           first_name: donor.first_name,
           last_name: donor.last_name,
           gender: `${donor.gender}`,
+          blood_groug_id: `${donor.blood_group_id}`,
+          ssn: donor.ssn,
           phone: donor.phone,
           email: donor.email,
         }
@@ -64,14 +79,13 @@ export class DonorService {
       );
   }
 
-  deleteUser(uid: number): Observable<any> {
-    return of('Not Implemented Yet!!!');
-    // return this.http.delete<any>(`${this.url}?id=${uid}`, { headers: this.headers }).pipe(
-    //   map((data: any) => {
-    //     return data;
-    //   }),
-    //   catchError(this.handleError)
-    // );
+  deleteDonor(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.url}/${id}`, { headers: this.headers }).pipe(
+      map((data: any) => {
+        return data;
+      }),
+      catchError(this.handleError)
+    );
   }
 
   private initializeDonor(): Donor {
@@ -84,7 +98,7 @@ export class DonorService {
       phone: null,
       email: null,
       ssn: null,
-      blood_group: null,
+      blood_group_id: null,
       // address: null
     };
   }

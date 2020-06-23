@@ -16,8 +16,8 @@ export class UserComponent implements OnInit {
   userForm: FormGroup;
   user: User;
   genders = [
-    {id: 1, value: 'male'},
-    {id: 2, value: 'female'}
+    { id: 1, value: 'male' },
+    { id: 2, value: 'female' }
   ];
   userTypes = [
     { id: 1, value: 'Admin' },
@@ -38,7 +38,7 @@ export class UserComponent implements OnInit {
       first_name: [null, Validators.required],
       last_name: [null, Validators.required],
       gender: [null, Validators.required],
-      user_type: [null, Validators.required],
+      user_type_id: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
       phone: [null, Validators.required],
     });
@@ -55,14 +55,14 @@ export class UserComponent implements OnInit {
   get first_name() { return this.userForm.get('first_name'); }
   get last_name() { return this.userForm.get('last_name'); }
   get gender() { return this.userForm.get('gender'); }
-  get user_type() { return this.userForm.get('user_type'); }
+  get user_type_id() { return this.userForm.get('user_type_id'); }
   get email() { return this.userForm.get('email'); }
   get phone() { return this.userForm.get('phone'); }
 
   getUser(id: number): void {
     this.adminService.getUser(id).subscribe(
-       (data) => this.displayUser(data),
-       err => console.log(err)
+      (data) => this.displayUser(data),
+      err => console.log(err)
     );
   }
 
@@ -80,7 +80,7 @@ export class UserComponent implements OnInit {
         first_name: this.user.first_name,
         last_name: this.user.last_name,
         gender: this.user.gender,
-        user_type: this.user.user_type,
+        user_type_id: this.user.user_type_id,
         email: this.user.email,
         phone: this.user.phone
       }
@@ -90,9 +90,9 @@ export class UserComponent implements OnInit {
   onSave(): void {
     if (this.userForm.valid && this.userForm.dirty) {
       const u = { ...this.user, ...this.userForm.value };
-      console.log(u);
+      console.log(this.userForm.value);
       if (u.id === 0) {
-        this.adminService.addUser(u).subscribe(
+        this.adminService.addUser(this.userForm.value).subscribe(
           data => {
             this.onClose();
           },

@@ -1,3 +1,4 @@
+import { DonorInfoComponent } from './components/donors/donor-info/donor-info.component';
 import { BloodProductComponent } from './components/blood-products/blood-product/blood-product.component';
 import { BloodProductsComponent } from './components/blood-products/blood-products.component';
 import { ActivityComponent } from './components/donor-activites/activity/activity.component';
@@ -24,7 +25,9 @@ const bbRoutes: Routes = [
       },
       {
         path: 'donors', component: DonorsComponent, children: [
+          { path: 'find-donor', component: DonorInfoComponent },
           { path: 'donor', component: DonorComponent, canDeactivate: [] },
+          { path: 'activity', component: ActivityComponent, canDeactivate: [] },
         ]
       },
       {

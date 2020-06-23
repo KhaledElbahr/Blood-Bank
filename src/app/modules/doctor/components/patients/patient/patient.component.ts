@@ -15,7 +15,6 @@ export class PatientComponent implements OnInit {
   @Input('patientInfo') patient: Patient;
 
   constructor(
-    private patientService: PatientService,
     private route: ActivatedRoute,
     private router: Router,
     private dialog: MatDialog) { }
@@ -24,7 +23,11 @@ export class PatientComponent implements OnInit {
   }
 
   addRequest() {
-    this.router.navigate(['./request'], { queryParams: { rId: 0, 'add-request': true }, relativeTo: this.route });
+    this.router.navigate(['./request'],
+      {
+        queryParams: { pId: this.patient.id, rId: 0, 'add-request': true },
+        relativeTo: this.route
+      });
     const dialogRef = this.dialog.open(RequestComponent, {
       disableClose: true,
       autoFocus: true,

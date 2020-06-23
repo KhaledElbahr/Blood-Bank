@@ -11,7 +11,6 @@ import { Request } from './../../../core/models/request';
 export class RequestService {
   url = 'http://localhost:8000/api/request';
   ACCESS_TOKEN: string = this.auth.ACCESS_TOKEN;
-  USER_ID: number = this.auth.USER_ID;
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
     Authorization: `Bearer ${this.ACCESS_TOKEN}`
@@ -44,9 +43,7 @@ export class RequestService {
   }
 
   addRequest(request: Request): Observable<any> {
-    if (request.id === 0) {
-      delete request.id;
-    }
+    delete request.id;
     console.log(request);
     return this.http.post(`${this.url}`, request, { headers: this.headers }).pipe(
       map((data) => {
@@ -59,17 +56,28 @@ export class RequestService {
 
   updateRequest(request: Request) {
     console.log(request);
-    return this.http.put(`${this.url}/${request.id}`, request, { headers: this.headers }).pipe(
-      map((data) => {
-        console.log(data);
-        return data;
-      }),
-      catchError(this.handleError)
-    );
+    return this.http.put(`${this.url}/${request.id}`, null,
+      {
+        headers: this.headers,
+        params: {
+          patient_id: `${request.patient_id}`,
+          blood_group_id: `${request.blood_group_id}`,
+          product_type_id: `${request.product_type_id}`,
+          quantity: `${request.quantity}`,
+          priority: `${request.priority}`,
+          required_date: `${request.required_date}`
+        }
+      }).pipe(
+        map((data) => {
+          console.log(data);
+          return data;
+        }),
+        catchError(this.handleError)
+      );
   }
 
-  deleteRequest(id: number) {
-    return this.http.delete(`${this.url}/${id}`).pipe(
+  deleteRequest(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.url}/${id}`, { headers: this.headers }).pipe(
       map((data: any) => {
         return data;
       }),
@@ -81,16 +89,18 @@ export class RequestService {
   private initializeRequest(): Request {
     return {
       id: 0,
-      product_type: { id: 0, value: null },
-      blood_group: { id: 0, value: null },
+      product_type_id: null,
+      blood_group_id: null,
+      blood_group: null,
+      product_type: null,
       quantity: 0,
-      priority: { id: 0, value: null },
+      priority: null,
       patient_id: 0,
-      patient_full_name: null,
-      requested_date: null,
+      full_name: null,
       required_date: null,
-      status: { id: 0, value: null },
+      status: null,
       submitted_by: null,
+      created_at: null
     };
   }
 

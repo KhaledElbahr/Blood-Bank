@@ -15,7 +15,7 @@ export class DonorsComponent implements OnInit {
   searchKey: string;
   findDonor = false;
   donor: Donor;
-  hasDonor: Observable<boolean>;
+
   constructor(
     private donorService: DonorService,
     private router: Router,
@@ -37,25 +37,24 @@ export class DonorsComponent implements OnInit {
   applyFilter() {
     const ssn = this.searchKey.trim().toLowerCase();
     this.getDonor(ssn);
-    if (this.donor) {
-      this.router.navigate(['./donor', this.donor.id], { relativeTo: this.route });
-    }
   }
 
   onSearchClear() {
     this.searchKey = '';
-    this.applyFilter();
   }
 
   getDonor(ssn: string) {
-    this.donorService.getDonor(ssn).subscribe(
+    this.donorService.getDonorBySSN(ssn).subscribe(
       (data: Donor) => {
         this.donor = data;
-        this.hasDonor = of(true);
+        if (this.donor) {
+          this.router.navigate(['./find-donor'], { queryParams: { id: this.donor.id }, relativeTo: this.route });
+        }
+        this.findDonor = true;
       },
       err => {
         console.log(err);
-        this.hasDonor = of(false);
+        this.findDonor = false;
       }
     );
   }

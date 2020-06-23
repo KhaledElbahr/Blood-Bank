@@ -30,7 +30,8 @@
   <button
     mat-button
     aria-label="Search"
-    (click)="applyFilter(); findDonor = !findDonor"
+    [disabled]="!searchKey"
+    (click)="applyFilter()"
   >
     Find Donor
   </button>
@@ -38,10 +39,10 @@
 
 <mat-divider></mat-divider>
 <br />
-<div class="profile" *ngIf="(!(hasDonor | async) && findDonor); else donorInfo">
+<div class="profile" *ngIf="!(donor && findDonor); else donorInfo">
   <h2>There is No Donor With This SSN</h2>
 </div>
-<div class="profile" #donorInfo *ngIf="((hasDonor | async) && findDonor); else addDonor">
+<div class="profile" #donorInfo *ngIf="(donor && findDonor); else addDonor">
   <h2>Donor Info:</h2>
   <app-donor-info [donorInfo]="donor"></app-donor-info>
 </div>

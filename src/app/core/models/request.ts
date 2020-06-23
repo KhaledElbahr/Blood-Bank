@@ -1,13 +1,15 @@
 export interface Request {
   id: number;
-  product_type: { id: number, value: string };
-  blood_group: { id: number, value: string };
+  patient_id: number;
+  full_name: string;
+  blood_group_id: { id: number, value: string };
+  product_type_id: { id: number, value: string };
+  blood_group: string;
+  product_type: string;
   quantity: number;
   priority: { id: number, value: string };
-  patient_id: number;
-  patient_full_name: string;
-  requested_date: Date;
   required_date: Date;
-  status: { id: number, value: string };
   submitted_by: string;
+  status: { id: number, value: string };
+  created_at: Date;
 }

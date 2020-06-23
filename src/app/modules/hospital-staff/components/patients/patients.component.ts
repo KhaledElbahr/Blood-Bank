@@ -12,8 +12,9 @@ import { PatientService } from 'src/app/core/services/patient.service';
 })
 export class PatientsComponent implements OnInit {
   searchKey: string;
-  findPatient = false;
   patient: Patient;
+  HasPatient: boolean;
+  
   constructor(
     private patientService: PatientService,
     private router: Router,
@@ -30,31 +31,32 @@ export class PatientsComponent implements OnInit {
       width: '35%',
     });
     this.router.navigate(['./patient'], { queryParams: { id: 0, 'add-patient': true }, relativeTo: this.route });
-
-    // dialogRef.afterClosed().subscribe(() => this.getVolunteers());
   }
 
   applyFilter() {
     const ssn = this.searchKey.trim().toLowerCase();
     this.getPatient(ssn);
-    if (this.patient) {
-      this.router.navigate(['./patient', this.patient.id], { relativeTo: this.route });
-    }
+
   }
 
   onSearchClear() {
     this.searchKey = '';
-    this.applyFilter();
+    // this.applyFilter();
   }
 
   getPatient(ssn: string) {
-    this.patientService.getPatient(ssn).subscribe(
+    this.patientService.getPatientBySSN(ssn).subscribe(
       (data: Patient) => {
-        console.log(data);
         this.patient = data;
+        if (this.patient) {
+          this.router.navigate(['./patient'], { queryParams: { id: this.patient.id }, relativeTo: this.route });
+        }
+        this.HasPatient = true;
       },
-      err => console.log(err)
+      err => {
+        console.log(err.error.message);
+        this.HasPatient = false;
+      }
     );
   }
-
 }

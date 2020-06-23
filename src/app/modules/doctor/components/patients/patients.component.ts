@@ -24,9 +24,6 @@ export class PatientsComponent implements OnInit {
   applyFilter() {
     const ssn = this.searchKey.trim().toLowerCase();
     this.getPatient(ssn);
-    if (this.patient) {
-      this.router.navigate(['./patient', this.patient.id], { relativeTo: this.route });
-    }
   }
 
   onSearchClear() {
@@ -35,10 +32,13 @@ export class PatientsComponent implements OnInit {
   }
 
   getPatient(ssn: string) {
-    this.patientService.getPatient(ssn).subscribe(
+    this.patientService.getPatientBySSN(ssn).subscribe(
       (data: Patient) => {
         console.log(data);
         this.patient = data;
+        if (this.patient) {
+          this.router.navigate(['./patient', `${this.patient.id}`], { relativeTo: this.route });
+        }
       },
       err => console.log(err)
     );

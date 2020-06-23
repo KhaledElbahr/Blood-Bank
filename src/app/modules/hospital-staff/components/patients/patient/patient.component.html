@@ -86,12 +86,12 @@
             <!-- Blood Group -->
             <mat-form-field class="select-control">
               <mat-label>Blood Group</mat-label>
-              <mat-select formControlName="blood_group" required>
+              <mat-select formControlName="blood_group_id" required>
                 <mat-option
-                  *ngFor="let blood_group of bloodGroups"
-                  [value]="blood_group.id"
+                  *ngFor="let blood_group_id of bloodGroups"
+                  [value]="blood_group_id.id"
                 >
-                  {{ blood_group.value | uppercase }}
+                  {{ blood_group_id.value | uppercase }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -106,8 +106,10 @@
                   matInput
                   class="control-input"
                   formControlName="phone"
-                  #phoneInput
+                  min="11"
+                  max="11"
                   maxLength="11"
+                  #phoneInput
                   placeholder="@ex.01"
                 />
                 <mat-hint align="end"
@@ -128,7 +130,6 @@
                   type="text"
                   formControlName="address"
                   placeholder="Enter patient's address"
-                  required
                 />
               </mat-form-field>
             </div>

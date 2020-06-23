@@ -9,16 +9,18 @@
           <!-- Product Type -->
           <mat-form-field class="select-control">
             <mat-label>Product Type</mat-label>
-            <mat-select formControlName="product_type">
+            <mat-select formControlName="product_type_id" required>
               <mat-option
-                *ngFor="let product_type of productTypes"
-                [value]="product_type.id"
+                *ngFor="let product_type_id of productTypes"
+                [value]="product_type_id.id"
               >
-                {{ product_type.value | uppercase }}
+                {{ product_type_id.value | uppercase }}
               </mat-option>
             </mat-select>
             <mat-error
-              *ngIf="product_type.hasError('required') && product_type.touched"
+              *ngIf="
+                product_type_id.hasError('required') && product_type_id.touched
+              "
             >
               Product Type is required.
             </mat-error>
@@ -27,16 +29,18 @@
           <!-- Blood Group -->
           <mat-form-field class="select-control">
             <mat-label>Blood Group</mat-label>
-            <mat-select formControlName="blood_group">
+            <mat-select formControlName="blood_group_id" required>
               <mat-option
-                *ngFor="let blood_group of bloodGroups"
-                [value]="blood_group.id"
+                *ngFor="let blood_group_id of bloodGroups"
+                [value]="blood_group_id.id"
               >
-                {{ blood_group.value | uppercase }}
+                {{ blood_group_id.value | uppercase }}
               </mat-option>
             </mat-select>
             <mat-error
-              *ngIf="blood_group.hasError('required') && blood_group.touched"
+              *ngIf="
+                blood_group_id.hasError('required') && blood_group_id.touched
+              "
             >
               Blood Group is required.
             </mat-error>
@@ -89,7 +93,7 @@
           <!-- Request Priority -->
           <mat-form-field class="select-control">
             <mat-label>Request Priority</mat-label>
-            <mat-select formControlName="priority">
+            <mat-select formControlName="priority" required>
               <mat-option
                 *ngFor="let priority of priorities"
                 [value]="priority.id"

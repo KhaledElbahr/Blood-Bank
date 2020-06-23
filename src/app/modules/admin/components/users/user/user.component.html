@@ -73,16 +73,16 @@
           <!-- User Type -->
           <mat-form-field class="select-control">
             <mat-label>User Type</mat-label>
-            <mat-select formControlName="user_type">
+            <mat-select formControlName="user_type_id">
               <mat-option
-                *ngFor="let user_type of userTypes"
-                [value]="user_type.id"
+                *ngFor="let user_type_id of userTypes"
+                [value]="user_type_id.id"
               >
-                {{ user_type.value | uppercase }}
+                {{ user_type_id.value | uppercase }}
               </mat-option>
             </mat-select>
             <mat-error
-              *ngIf="user_type.hasError('required') && user_type.touched"
+              *ngIf="user_type_id.hasError('required') && user_type_id.touched"
             >
               User Type is required.
             </mat-error>

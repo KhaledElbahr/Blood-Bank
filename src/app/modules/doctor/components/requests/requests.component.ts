@@ -16,11 +16,11 @@ export class RequestsComponent implements OnInit {
   requests: Request[];
   displayedColumns: string[] = [
     'patient_id',
-    'patient_full_name',
+    'full_name',
     'product_type',
     'blood_group',
     'quantity',
-    'requested_date',
+    'created_at',
     'required_date',
     'status',
     'priority',
@@ -31,10 +31,11 @@ export class RequestsComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  constructor(private route: ActivatedRoute,
-              private router: Router,
-              public dialog: MatDialog,
-              private requestService: RequestService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    public dialog: MatDialog,
+    private requestService: RequestService) { }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
@@ -42,8 +43,7 @@ export class RequestsComponent implements OnInit {
   }
 
   onEdit(request: Request): void {
-    const id = request.id;
-    this.router.navigate(['./request'], {queryParams: {rId: `${id}`, 'enable-edit': true}, relativeTo: this.route});
+    this.router.navigate(['./request'], { queryParams: { rId: `${request.id}`, 'enable-edit': true }, relativeTo: this.route });
     const dialogRef = this.dialog.open(RequestComponent, {
       disableClose: true,
       autoFocus: true,
@@ -83,7 +83,7 @@ export class RequestsComponent implements OnInit {
   deleteRequest(request: Request) {
     this.requestService.deleteRequest(request.id).subscribe(
       () => this.getRequests(),
-       err => console.log(err)
+      err => console.log(err)
     );
   }
 }

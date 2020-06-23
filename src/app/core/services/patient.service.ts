@@ -12,7 +12,6 @@ import { Patient } from '../models/patient';
 export class PatientService {
   url = 'http://127.0.0.1:8000/api/patient';
   ACCESS_TOKEN: string = this.auth.ACCESS_TOKEN;
-
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
     Authorization: `Bearer ${this.ACCESS_TOKEN}`
@@ -20,11 +19,11 @@ export class PatientService {
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  getPatient(ssnORId: string | number) {
-    if (ssnORId === 0) {
+  getPatientById(Id: number) {
+    if (Id === 0) {
       return of(this.initializePatient());
     }
-    return this.http.get<Patient>(`${this.url}/${ssnORId}`, { headers: this.headers }).pipe(
+    return this.http.get<Patient>(`${this.url}/${Id}`, { headers: this.headers }).pipe(
       map((data: Patient) => {
         console.log(data);
         return data;
@@ -33,10 +32,22 @@ export class PatientService {
     );
   }
 
+  getPatientBySSN(ssn: string): Observable<Patient> {
+    return this.http.get<Patient>('http://127.0.0.1:8000/api/find_patient', {
+      headers: this.headers,
+      params: { ssn }
+    }).pipe(
+      map((data: Patient) => {
+        console.log(data);
+        return data;
+      })
+    );
+  }
+
   addPatient(patient: Patient): Observable<any> {
-    if (patient.id === 0) {
-      delete patient.id;
-    }
+    // if (patient.id === 0) {
+    delete patient.id;
+    // }
     console.log(patient);
     return this.http.post(`${this.url}`, patient, { headers: this.headers }).pipe(
       map((data) => {
@@ -58,6 +69,15 @@ export class PatientService {
     );
   }
 
+  deletePatient(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.url}/${id}`, { headers: this.headers }).pipe(
+      map((data: any) => {
+        return data;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
   // Initialize Patient
   private initializePatient(): Patient {
     return {
@@ -68,7 +88,8 @@ export class PatientService {
       full_name: null,
       phone: null,
       gender: { id: null, value: null },
-      blood_group: { id: 0, name: null },
+      blood_group_id: { id: null, value: null },
+      blood_group: null,
       address: null,
     };
   }

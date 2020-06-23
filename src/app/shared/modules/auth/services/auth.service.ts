@@ -30,10 +30,11 @@ export class AuthService {
         const access = {
           user_type: data.success.user_type,
           user_type_id: data.success.user_type_id,
+          id: data.success.id,
           token: data.success.token
         };
         this.ACCESS_TOKEN = access.token;
-        this.USER_ID = access.user_type_id;
+        this.USER_ID = access.id;
         console.log(data);
         if (access.user_type_id === 1) {
           this.userType = 'admin';
@@ -46,6 +47,9 @@ export class AuthService {
           localStorage.setItem('token', access.token);
         } else if (access.user_type_id === 4) {
           this.userType = 'doctor';
+          localStorage.setItem('token', access.token);
+        } else if (access.user_type_id === 5) {
+          this.userType = 'donor';
           localStorage.setItem('token', access.token);
         }
         return access;

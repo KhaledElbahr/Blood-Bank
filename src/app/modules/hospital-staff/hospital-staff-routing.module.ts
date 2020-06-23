@@ -18,7 +18,7 @@ const hStaffRoutes: Routes = [
       },
       {
         path: 'patients', component: PatientsComponent, children: [
-          { path: 'patient/:id', component: PatientComponent, canDeactivate: [] },
+          { path: 'patient', component: PatientComponent, canDeactivate: [] },
         ]
       },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }

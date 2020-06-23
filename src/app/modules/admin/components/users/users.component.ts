@@ -58,13 +58,11 @@ export class UsersComponent implements OnInit {
     console.log(user.id);
     const confirmation = window.confirm('Are you sure you want to remove this User?');
     if (confirmation) {
-      // this.delete(user);
+      this.delete(user);
     }
   }
 
   getUsers() {
-    // console.log('Not Implemented Yet!!!');
-
     this.adminService.getUsers().subscribe(
       (data: User[]) => {
         console.log(data);
@@ -84,11 +82,11 @@ export class UsersComponent implements OnInit {
     this.applyFilter();
   }
 
-  // delete(user: User) {
-  //   this.adminService.deleteUser(user.id).subscribe(
-  //     () => this.getUser(),
-  //      err => console.log(err)
-  //   );
-  // }
+  delete(user: User) {
+    this.adminService.deleteUser(user.id).subscribe(
+      () => this.getUsers(),
+      err => console.log(err)
+    );
+  }
 
 }

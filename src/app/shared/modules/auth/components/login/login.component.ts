@@ -32,18 +32,17 @@ export class LoginComponent implements OnInit {
     if (formValue.username && formValue.password) {
       this.authService.login(formValue).subscribe(
         data => {
-          const USER_ID: number = data.user_type_id;
-          const ACCESS_TOKEN: NavigationExtras = {
-            fragment: data.token
-          };
-          if (USER_ID === 1) {
-            this.router.navigate(['/admin'], ACCESS_TOKEN);
-          } else if (USER_ID === 2) {
-            this.router.navigate(['/blood-bank'], ACCESS_TOKEN);
-          } else if (USER_ID === 3) {
-            this.router.navigate(['/hospital'], ACCESS_TOKEN);
-          } else if (USER_ID === 4) {
-            this.router.navigate(['/doctor'], ACCESS_TOKEN);
+          const USER_TYPE_ID: number = data.user_type_id;
+          if (USER_TYPE_ID === 1) {
+            this.router.navigate(['/admin']);
+          } else if (USER_TYPE_ID === 2) {
+            this.router.navigate(['/blood-bank']);
+          } else if (USER_TYPE_ID === 3) {
+            this.router.navigate(['/hospital']);
+          } else if (USER_TYPE_ID === 4) {
+            this.router.navigate(['/doctor']);
+          } else if (USER_TYPE_ID === 5) {
+            this.router.navigate(['/donor']);
           }
         },
         err => { console.log(err); }

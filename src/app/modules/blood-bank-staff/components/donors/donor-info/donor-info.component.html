@@ -7,7 +7,11 @@
       </mat-list-item>
       <mat-list-item role="listitem"
         ><mat-icon>email</mat-icon>
-        <p>{{ donor.blood_group }}</p>
+        <p>{{ donor.blood_group_id }}</p>
+      </mat-list-item>
+      <mat-list-item role="listitem" *ngIf="donor.email"
+        ><mat-icon>email</mat-icon>
+        <p>{{ donor.email }}</p>
       </mat-list-item>
       <mat-list-item role="listitem"
         ><mat-icon>work</mat-icon>

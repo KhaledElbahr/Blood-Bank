@@ -29,7 +29,7 @@ export class AdminService {
       catchError(this.handleError)
     );
   }
-  // return of(this.initializeUser());
+
   getUser(id: number): Observable<User> {
     if (id === 0) {
       return of(this.initializeUser());
@@ -44,7 +44,7 @@ export class AdminService {
   }
 
   addUser(user: User): Observable<User> {
-    user.id = null;
+    delete user.id;
     return this.http.post<User>(`${this.url}`, user, { headers: this.headers }).pipe(
       map((data: User) => {
         console.log(data);
@@ -64,7 +64,7 @@ export class AdminService {
           gender: `${user.gender}`,
           phone: user.phone,
           email: user.email,
-          user_type_id: `${user.user_id}`
+          user_type_id: `${user.user_type_id}`
         }
       }).pipe(
         map((data: any) => {
@@ -76,19 +76,18 @@ export class AdminService {
   }
 
   deleteUser(uid: number): Observable<any> {
-    return of('Not Implemented Yet!!!');
-    // return this.http.delete<any>(`${this.url}?id=${uid}`, { headers: this.headers }).pipe(
-    //   map((data: any) => {
-    //     return data;
-    //   }),
-    //   catchError(this.handleError)
-    // );
+    return this.http.delete<any>(`${this.url}/${uid}`, { headers: this.headers }).pipe(
+      map((data: any) => {
+        return data;
+      }),
+      catchError(this.handleError)
+    );
   }
 
   private initializeUser(): User {
     return {
       id: 0,
-      user_type: null,
+      user_type_id: null,
       user_id: 0,
       first_name: null,
       last_name: null,

@@ -5,7 +5,8 @@ export interface Patient {
   last_name: string;
   full_name: string;
   phone: string;
-  gender: { id: string, value: string };
-  blood_group: { id: number, name: string };
+  gender: { id: number, value: string };
+  blood_group_id: { id: number, value: string };
+  blood_group: string;
   address: string;
 }

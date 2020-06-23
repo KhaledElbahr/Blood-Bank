@@ -61,19 +61,19 @@ export class RequestsComponent implements OnInit {
   }
 
   deleteRequest(request: Request) {
-    this.requestsService.deleteRequest(request.id).subscribe(
-      () => this.getRequests(),
-      err => console.log(err)
-    );
+    // this.requestsService.deleteRequest(request.id).subscribe(
+    //   () => this.getRequests(),
+    //   err => console.log(err)
+    // );
   }
 
   getRequests() {
-    this.requestsService.getRequests().subscribe(
-      (data: Request[]) => {
-        this.requests = data;
-        this.dataSource = new MatTableDataSource<Request>(this.requests);
-      },
-      err => console.log(err)
-    );
+    // this.requestsService.getRequests().subscribe(
+    //   (data: Request[]) => {
+    //     this.requests = data;
+    //     this.dataSource = new MatTableDataSource<Request>(this.requests);
+    //   },
+    //   err => console.log(err)
+    // );
   }
 }

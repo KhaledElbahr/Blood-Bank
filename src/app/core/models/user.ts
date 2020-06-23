@@ -1,6 +1,6 @@
 export interface User {
   id: number;
-  user_type: number;
+  user_type_id: { id: number, value: string };
   user_id: number;
   first_name: string;
   last_name: string;
