@@ -1,0 +1,20 @@
+<mat-card *ngIf="donor">
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <mat-icon>persons</mat-icon>
+        <p>{{ donor.full_name }}</p>
+      </mat-list-item>
+      <mat-list-item role="listitem"
+        ><mat-icon>email</mat-icon>
+        <p>{{ donor.email }}</p>
+      </mat-list-item>
+      <mat-list-item role="listitem"
+        ><mat-icon>work</mat-icon>
+        <p>{{ donor.phone }}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <!-- <mat-card-actions>
+  </mat-card-actions> -->
+</mat-card>

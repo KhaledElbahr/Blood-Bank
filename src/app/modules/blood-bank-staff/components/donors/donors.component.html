@@ -39,12 +39,12 @@
 
 <mat-divider></mat-divider>
 <br />
-<div class="profile" *ngIf="!(donor && findDonor); else donorInfo">
+<div class="profile" *ngIf="!(donor)">
   <h2>There is No Donor With This SSN</h2>
 </div>
-<div class="profile" #donorInfo *ngIf="(donor && findDonor); else addDonor">
+<div class="profile" #donorInfo *ngIf="donor; else addDonor">
   <h2>Donor Info:</h2>
-  <app-donor-info [donorInfo]="donor"></app-donor-info>
+  <app-donor-info [donorInfo]="donor" ></app-donor-info>
 </div>
 <ng-template #addDonor>
   <p>Add New Donor</p>

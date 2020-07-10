@@ -21,6 +21,7 @@ import { BloodProductComponent } from './components/blood-products/blood-product
 import { ProductInfoComponent } from './components/blood-products/product-info/product-info.component';
 import { RequestsComponent } from './components/requests/requests.component';
 import { ApprovedRequestsComponent } from './components/approved-requests/approved-requests.component';
+import { HandleRequestComponent } from './components/requests/handle-request/handle-request.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ApprovedRequestsComponent } from './components/approved-requests/approv
     BloodProductComponent,
     ProductInfoComponent,
     RequestsComponent,
-    ApprovedRequestsComponent
+    ApprovedRequestsComponent,
+    HandleRequestComponent
   ],
   imports: [
     CommonModule,

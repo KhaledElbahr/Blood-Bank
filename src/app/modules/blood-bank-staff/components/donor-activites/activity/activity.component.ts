@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { BoodGroupService } from 'src/app/core/services/bood-group.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Location } from '@angular/common';
-import { DonorActivity } from '../../../models/donor-activity';
-import { DonorActivityService } from '../../../services/donor-activity.service';
+import { DonorActivity } from '../../../../../core/models/donor-activity';
+import { DonorActivityService } from '../../../../../core/services/donor-activity.service';
 
 @Component({
   selector: 'app-activity',
@@ -16,13 +15,14 @@ export class ActivityComponent implements OnInit {
   pageTitle = 'Edit Activity';
   activityForm: FormGroup;
   activity: DonorActivity;
-  bloodGroups: { id: number, value: string }[];
+  donorId: number;
+  hasViruses: boolean;
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private route: ActivatedRoute,
     private location: Location,
-    private bloodService: BoodGroupService,
     private donorActivityService: DonorActivityService,
     public dialogRef: MatDialogRef<ActivityComponent>
   ) { }
@@ -37,6 +37,17 @@ export class ActivityComponent implements OnInit {
     { id: 3, value: 'platelet' }
   ];
 
+  bloodGroups = [
+    { id: 1, value: 'O+' },
+    { id: 2, value: 'O-' },
+    { id: 3, value: 'A+' },
+    { id: 4, value: 'A-' },
+    { id: 5, value: 'B+' },
+    { id: 6, value: 'B-' },
+    { id: 7, value: 'AB+' },
+    { id: 8, value: 'AB-' }
+  ];
+
   DonorViruses = [
     { id: 1, value: 'HIV' },
     { id: 2, value: 'HEPATITIS A' },
@@ -47,29 +58,32 @@ export class ActivityComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.getBloodGroups();
-    this.activityForm = this.fb.group({
-      status: [null, Validators.required],
-      product_type: [null, Validators.required],
-      viruses: [null],
-      temp: [null, Validators.required],
-      weight: [null, Validators.required],
-      height: [null, Validators.required],
-    });
-
-    // Read the activity Id from the route parameter
+    // Read the activity & donor Id from the route parameter
     this.route.queryParamMap.subscribe(
       params => {
         const id = +params.get('id');
+        this.donorId = +params.get('donor_Id');
         this.getActivity(id);
       }
     );
+
+    this.activityForm = this.fb.group({
+      donor_id: this.donorId,
+      status: [null, Validators.required],
+      product_type_id: [null, Validators.required],
+      viruses: [null],
+      temperature: [null, Validators.required],
+      weight: [null, Validators.required],
+      height: [null, Validators.required],
+      comments: null
+    });
+
   }
 
   get status() { return this.activityForm.get('status'); }
-  get product_type() { return this.activityForm.get('donationType'); }
+  get product_type_id() { return this.activityForm.get('product_type_id'); }
   get viruses() { return this.activityForm.get('viruses'); }
-  get temp() { return this.activityForm.get('temp'); }
+  get temperature() { return this.activityForm.get('temperature'); }
   get weight() { return this.activityForm.get('weight'); }
   get height() { return this.activityForm.get('height'); }
 
@@ -77,6 +91,7 @@ export class ActivityComponent implements OnInit {
     this.donorActivityService.getActivity(id).subscribe({
       next: (activity: DonorActivity) => {
         this.displayActivity(activity);
+        console.log(activity);
       },
       error: err => console.log(err)
     });
@@ -88,17 +103,24 @@ export class ActivityComponent implements OnInit {
       this.pageTitle = 'Add Activity';
     } else {
       this.pageTitle = 'Edit Activity';
+      if (activity.viruses.length !== 0) {
+        this.hasViruses = true;
+      } else {
+        this.hasViruses = false;
+      }
     }
 
     // Update the data on the form
     this.activityForm.patchValue(
       {
+        donor_id: this.activity.donor_id,
         status: this.activity.status,
-        product_type: this.activity.product_type,
+        product_type_id: this.activity.product_type_id,
         viruses: this.activity.viruses,
-        temp: this.activity.temp,
+        temperature: this.activity.temperature,
         weight: this.activity.weight,
-        height: this.activity.height
+        height: this.activity.height,
+        comments: this.activity.comments
       }
     );
   }
@@ -111,7 +133,10 @@ export class ActivityComponent implements OnInit {
       if (a.id === 0) {
         this.donorActivityService.addActivity(this.activityForm.value).subscribe(
           data => {
-            this.onClose();
+            this.dialogRef.close();
+            this.dialogRef.afterClosed().subscribe(result => {
+              this.router.navigate(['./blood-bank/activities'], { queryParams: null, relativeTo: this.route });
+            });
             // this.notifyService.notify(data.message);
           },
           // err => this.notifyService.notify(err)
@@ -145,16 +170,6 @@ export class ActivityComponent implements OnInit {
     this.dialogRef.afterClosed().subscribe(result => {
       this.applyNavigation();
     });
-  }
-
-
-  getBloodGroups() {
-    this.bloodService.getBloodGroups().subscribe(
-      (data: { id: number, value: string }[]) => {
-        this.bloodGroups = data;
-      },
-      err => console.log(err)
-    );
   }
 
 }

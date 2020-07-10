@@ -27,6 +27,11 @@ const routes: Routes = [
     canLoad: [LoginAuthGuard],
     loadChildren: () => import('./modules/hospital-staff/hospital-staff.module').then(m => m.HospitalStaffModule),
   },
+  {
+    path: 'donor',
+    canLoad: [LoginAuthGuard],
+    loadChildren: () => import('./modules/donor/donor.module').then(m => m.DonorModule),
+  },
   { path: '**', component: PageNotFoundComponent }
 ];
 

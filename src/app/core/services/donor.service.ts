@@ -1,9 +1,9 @@
-import { Donor } from './../models/donor';
 import { Injectable } from '@angular/core';
 import { of, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from 'src/app/shared/modules/auth/services/auth.service';
 import { map, catchError } from 'rxjs/operators';
+import { Donor } from '../models/donor';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,16 @@ export class DonorService {
   constructor(
     private http: HttpClient,
     private auth: AuthService) { }
+
+  getDonorInfo(): Observable<Donor> {
+    return this.http.get<Donor>('http://127.0.0.1:8000/api/donor_info/', { headers: this.headers }).pipe(
+      map((data: Donor) => {
+        console.log(data);
+        return data;
+      }),
+      catchError(this.handleError)
+    );
+  }
 
   getDonor(Id: number): Observable<Donor> {
     if (Id === 0) {
@@ -58,6 +68,7 @@ export class DonorService {
   }
 
   updateDonor(donor: Donor): Observable<Donor> {
+    console.log(donor);
     return this.http.put<Donor>(`${this.url}/${donor.id}`, null,
       {
         headers: this.headers,
@@ -65,10 +76,10 @@ export class DonorService {
           first_name: donor.first_name,
           last_name: donor.last_name,
           gender: `${donor.gender}`,
-          blood_groug_id: `${donor.blood_group_id}`,
-          ssn: donor.ssn,
           phone: donor.phone,
           email: donor.email,
+          ssn: donor.ssn,
+          blood_group_id: `${donor.blood_group_id}`
         }
       }).pipe(
         map((data: any) => {
@@ -99,6 +110,8 @@ export class DonorService {
       email: null,
       ssn: null,
       blood_group_id: null,
+      blood_group: null,
+      donor_type_id: null
       // address: null
     };
   }

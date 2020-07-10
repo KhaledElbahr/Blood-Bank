@@ -1,0 +1,97 @@
+<section class="edit-profile">
+  <div class="content-wrapper">
+    <div class="contact-section-heading">
+      <h2 class="heading-primary" mat-dialog-title>Handle Request</h2>
+    </div>
+    <main>
+      <div class="edit-profile-form">
+        <!-- <form > -->
+        <mat-dialog-content [formGroup]="handleRequestForm">
+          <!-- Barcode -->
+
+          <div formArrayName="barcode">
+            <div
+              class="form-group"
+              *ngFor="let code of barcode.controls; let i = index"
+            >
+              <mat-form-field floatLabel="auto" class="form-control">
+                <mat-label [attr.for]="i">Barcode</mat-label>
+
+                <input
+                  matInput
+                  class="control-input"
+                  [id]="i"
+                  type="text"
+                  [formControlName]="i"
+                  placeholder="code"
+                  autocomplete="off"
+                  required
+                />
+                <button
+                  mat-button
+                  mat-icon-button
+                  matSuffix
+                  mat-icon-button
+                  aria-label="Clear"
+                  color="warn"
+                  title="Delete this code"
+                  (click)="deleteBarcode(i)"
+                >
+                  <mat-icon>delete_outline</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <button mat-raised-button title="Add a code" (click)="addBarcode()" [disabled]="(barcode.controls.length === request.quantity)">
+            <mat-icon>add</mat-icon>Create
+          </button>
+
+          <!-- <div class="form-group">
+            <mat-form-field floatLabel="auto" class="form-control">
+              <mat-label>Barcode</mat-label>
+              <input
+                matInput
+                class="control-input"
+                type="text"
+                formControlName="barcode"
+                required
+              />
+              <mat-error
+                *ngIf="
+                  barcode.invalid &&
+                  barcode.touched &&
+                  barcode.hasError('required')
+                "
+              >
+                Barcode is required.
+              </mat-error>
+            </mat-form-field>
+          </div> -->
+
+          <mat-dialog-actions>
+            <button
+              class="mat-raised-button mat-primary"
+              [title]="
+                handleRequestForm.valid
+                  ? 'Save your entered data'
+                  : 'Disabled until the form data is valid'
+              "
+              (click)="onSave()"
+              [disabled]="!(handleRequestForm.valid && barcode.valid && barcode.dirty)"
+            >
+              Confirm
+            </button>
+            <button
+              class="mat-raised-button mat-accent"
+              title="Cancel your data"
+              (click)="onCancel()"
+            >
+              Cancel
+            </button>
+          </mat-dialog-actions>
+        </mat-dialog-content>
+      </div>
+    </main>
+  </div>
+</section>

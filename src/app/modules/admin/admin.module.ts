@@ -16,6 +16,8 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { AdminComponent } from './layout/admin.component';
 import { UserComponent } from './components/users/user/user.component';
+import { StudentsComponent } from './components/students/students.component';
+import { StudentComponent } from './components/students/student/student.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { UserComponent } from './components/users/user/user.component';
     FooterComponent,
     SidebarComponent,
     AdminComponent,
-    UserComponent
+    UserComponent,
+    StudentsComponent,
+    StudentComponent
   ],
   imports: [
     CommonModule,

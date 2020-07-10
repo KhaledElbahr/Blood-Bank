@@ -4,16 +4,13 @@
 <br />
 
 <div class="search-area">
-  <button mat-raised-button title="Create new donor" (click)="onCreate()">
-    <mat-icon>add</mat-icon>Create
-  </button>
   <mat-form-field class="search-form-field" floatLabel="never">
     <input
       matInput
       type="text"
       [(ngModel)]="searchKey"
       name="searchKey"
-      placeholder="Search By Unit No..."
+      placeholder="Search By Barcode..."
       autocomplete="off"
     />
     <button
@@ -27,28 +24,17 @@
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
-  <button
-    mat-button
-    aria-label="Search"
-    (click)="applyFilter(); findProduct = !findProduct"
-  >
+  <button mat-button aria-label="Search" (click)="applyFilter()">
     Find Blood Product
   </button>
 </div>
 
 <mat-divider></mat-divider>
 <br />
-<div
-  class="profile"
-  *ngIf="!(hasProduct | async) && findProduct; else productInfo"
->
-  <h2>There is No such Product, Please Check Unit No</h2>
+<div class="profile" *ngIf="!hasProduct">
+  <h2>There is No such Product</h2>
 </div>
-<div
-  class="profile"
-  #productInfo
-  *ngIf="(hasProduct | async) && findProduct; else addProduct"
->
+<div class="profile" #productInfo *ngIf="hasProduct; else addProduct">
   <h2>Product Info:</h2>
   <app-product-info [productInfo]="product"></app-product-info>
 </div>

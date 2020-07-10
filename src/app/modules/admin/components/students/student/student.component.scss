@@ -1,0 +1,71 @@
+.content-wrapper {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 12px;
+  background-color: #fff;
+  margin: 3.7em auto;
+
+  @media (tab-land) {
+    width: 90%;
+  }
+
+  .contact-section-heading {
+    text-align: center;
+
+    .heading-primary {
+      color: #003d93;
+    }
+  }
+}
+
+mat-dialog-content,
+.mat-dialog-content {
+  overflow: inherit;
+}
+
+.form-group {
+  .form-control {
+    width: 100%;
+    margin-top: 2rem;
+
+    .control-input {
+      min-height: 20px;
+    }
+  }
+
+  .help-block {
+    text-transform: uppercase;
+    color: #1B5E20;
+  }
+}
+
+.select-control {
+  // width: 48%;
+  margin-top: 2rem;
+}
+
+.btn {
+  transition: all .3s;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+
+  &:hover {
+    color: #003d93;
+    background-color: #fff;
+    border: 1px solid #003d93;
+  }
+
+  &:disabled {
+    background-color: #7d9dca;
+    border: none;
+  }
+
+  &:disabled:hover {
+    color: rgba(0, 0, 0, .26);
+  }
+}
+
+mat-dialog-actions button {
+  margin: 1.2rem 1rem 0 0;
+}

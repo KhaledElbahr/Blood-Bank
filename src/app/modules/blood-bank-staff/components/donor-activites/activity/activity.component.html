@@ -29,18 +29,18 @@
             <!-- Type of Donation -->
             <div class="form-group">
               <mat-radio-group
-                formControlName="product_type"
+                formControlName="product_type_id"
                 aria-label="Select an option"
               >
                 <mat-radio-button
                   type="radio"
-                  *ngFor="let product_type of productTypes"
-                  [value]="product_type.id"
-                  >{{ product_type.value | uppercase }}</mat-radio-button
+                  *ngFor="let product_type_id of productTypes"
+                  [value]="product_type_id.id"
+                  >{{ product_type_id.value | uppercase }}</mat-radio-button
                 >
                 <mat-error
                   *ngIf="
-                    product_type.hasError('required') && product_type.touched
+                    product_type_id.hasError('required') && product_type_id.touched
                   "
                 >
                   Product Type is required
@@ -49,7 +49,7 @@
             </div>
             <!-- Viruses -->
             <div class="form-group">
-              <mat-slide-toggle color="primary" #toggle
+              <mat-slide-toggle color="primary" [checked]="hasViruses" #toggle
                 >Has Viruses</mat-slide-toggle
               >
             </div>
@@ -71,18 +71,18 @@
                 <mat-label>Temperature</mat-label>
                 <input
                   matInput
-                  type="number"
-                  formControlName="temp"
+                  type="text"
+                  formControlName="temperature"
                   placeholder="Enter Donor Temp"
                   required
                 />
                 <span matSuffix>&#176;C</span>
-                <mat-error *ngIf="temp.hasError('required')">
+                <mat-error *ngIf="temperature.hasError('required')">
                   Temperature is required
                 </mat-error>
               </mat-form-field>
               <div
-                *ngIf="temp.valid && (temp.dirty || temp.touched)"
+                *ngIf="temperature.valid && (temperature.dirty || temperature.touched)"
                 class="help-block"
               >
                 <small>Looks good!</small>
@@ -140,6 +140,8 @@
                 <mat-label>Leave a comment</mat-label>
                 <textarea
                   matInput
+                  type="text"
+                  formControlName="comments"
                   placeholder="Ex. This donor has..."
                 ></textarea>
               </mat-form-field>

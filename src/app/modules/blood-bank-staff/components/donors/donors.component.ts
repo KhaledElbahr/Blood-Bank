@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DonorComponent } from './donor/donor.component';
-import { Donor } from '../../models/donor';
-import { DonorService } from '../../services/donor.service';
-import { Observable, of } from 'rxjs';
+import { DonorService } from '../../../../core/services/donor.service';
+import { Donor } from 'src/app/core/models/donor';
 
 @Component({
   selector: 'app-donors',

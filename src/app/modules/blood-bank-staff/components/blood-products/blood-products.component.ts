@@ -35,11 +35,8 @@ export class BloodProductsComponent implements OnInit {
   }
 
   applyFilter() {
-    const unitNo = this.searchKey.trim().toLowerCase();
-    this.getProduct(unitNo);
-    if (this.product) {
-      this.router.navigate(['./product', this.product.id], { relativeTo: this.route });
-    }
+    const barcode = this.searchKey.trim().toLowerCase();
+    this.getProduct(barcode);
   }
 
   onSearchClear() {
@@ -47,10 +44,13 @@ export class BloodProductsComponent implements OnInit {
     this.applyFilter();
   }
 
-  getProduct(unitNo: string) {
-    this.bloodProductService.getProduct(unitNo).subscribe(
+  getProduct(barcode: string) {
+    this.bloodProductService.getProductByBarcode(barcode).subscribe(
       (data: BloodProduct) => {
         this.product = data;
+        if (this.product) {
+          this.router.navigate(['./product'],  { queryParams: {id: this.product.id}, relativeTo: this.route });
+        }
         this.hasProduct = of(true);
       },
       err => {

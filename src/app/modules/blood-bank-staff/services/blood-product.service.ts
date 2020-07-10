@@ -29,11 +29,24 @@ export class BloodProductService {
     );
   }
 
-  getProduct(unitNoORId: number | string): Observable<BloodProduct> {
-    if (unitNoORId === 0) {
+  getProduct(Id: number): Observable<BloodProduct> {
+    if (Id === 0) {
       return of(this.initializeProduct());
     }
-    return this.http.get<BloodProduct>(`${this.url}/${unitNoORId}`, { headers: this.headers }).pipe(
+    return this.http.get<BloodProduct>(`${this.url}/${Id}`, { headers: this.headers }).pipe(
+      map((data: BloodProduct) => {
+        console.log(data);
+        return data;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  getProductByBarcode(barcode: string): Observable<BloodProduct> {
+    return this.http.get<BloodProduct>('http://127.0.0.1:8000/api/find_product', {
+      headers: this.headers,
+      params: { barcode }
+    }).pipe(
       map((data: BloodProduct) => {
         console.log(data);
         return data;
@@ -68,7 +81,7 @@ export class BloodProductService {
   }
 
   deleteProduct(id: number) {
-    return this.http.delete(`${this.url}/${id}`).pipe(
+    return this.http.delete(`${this.url}/${id}`, { headers: this.headers }).pipe(
       map((data: any) => {
         return data;
       }),
@@ -81,10 +94,13 @@ export class BloodProductService {
     return {
       id: 0,
       barcode: null,
-      product_type: { id: 0, value: null },
-      storage_location: { id: 0, value: null },
-      blood_group: { id: 0, value: null },
-      donor_activity_id: 0
+      product_type_id: null,
+      product_type: null,
+      storage_location_id: null,
+      storage_location: null,
+      blood_group_id: null,
+      blood_group: null,
+      donor_activity_id: null
     };
   }
 

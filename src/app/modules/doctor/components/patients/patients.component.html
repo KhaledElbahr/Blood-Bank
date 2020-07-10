@@ -27,7 +27,7 @@
   <button
     mat-button
     aria-label="Search"
-    (click)="applyFilter(); findPatient = !findPatient"
+    (click)="applyFilter()"
   >
     Find Patient
   </button>
@@ -36,7 +36,7 @@
 <mat-divider></mat-divider>
 <br />
 
-<div class="profile" *ngIf="!patient && findPatient; else patientInfo">
+<div class="profile" *ngIf="!patient && findPatient">
   <h2>There is No Patient With This SSN</h2>
 </div>
 <div class="profile" #patientInfo *ngIf="patient && findPatient">

@@ -1,3 +1,4 @@
+import { Observable, Subscription } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -5,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { RequestsService } from '../../services/requests.service';
 import { Request } from './../../../../core/models/request';
+import { HandleRequestComponent } from './handle-request/handle-request.component';
 
 @Component({
   selector: 'app-requests',
@@ -15,11 +17,11 @@ export class RequestsComponent implements OnInit {
   requests: Request[];
   displayedColumns: string[] = [
     'patient_id',
-    'patient_full_name',
+    'full_name',
     'product_type',
     'blood_group',
     'quantity',
-    'requested_date',
+    'created_at',
     'required_date',
     'status',
     'priority',
@@ -50,30 +52,42 @@ export class RequestsComponent implements OnInit {
     this.applyFilter();
   }
 
-  confirmRequest(request: Request): void { }
+  confirmRequest(request: Request): void {
+    this.router.navigate(['./handle-request'], { queryParams: { id: request.id }, relativeTo: this.route });
+    const dialogRef = this.dialog.open(HandleRequestComponent, {
+      disableClose: true,
+      autoFocus: true,
+      width: '35%',
+      data: request
+    });
+    dialogRef.afterClosed().subscribe(() => this.getRequests());
+  }
 
-  cancelRequest(request: Request): void {
-    console.log(request.id);
-    const confirmation = window.confirm('Are you sure you want to Cancel this Request?');
+  cancelRequest(request: Request) {
+    const rejected = {
+      request_id: request.id,
+      status: 2,
+    };
+    const confirmation = window.confirm('Are you sure you want to Reject this Request?');
     if (confirmation) {
-      this.deleteRequest(request);
+      this.deleteRequest(rejected);
     }
   }
 
-  deleteRequest(request: Request) {
-    // this.requestsService.deleteRequest(request.id).subscribe(
-    //   () => this.getRequests(),
-    //   err => console.log(err)
-    // );
+  getRequests() {
+    this.requestsService.getRequests().subscribe(
+      (data: Request[]) => {
+        this.requests = data;
+        this.dataSource = new MatTableDataSource<Request>(this.requests);
+      },
+      err => console.log(err)
+    );
   }
 
-  getRequests() {
-    // this.requestsService.getRequests().subscribe(
-    //   (data: Request[]) => {
-    //     this.requests = data;
-    //     this.dataSource = new MatTableDataSource<Request>(this.requests);
-    //   },
-    //   err => console.log(err)
-    // );
+  deleteRequest(rejectedRequest) {
+    this.requestsService.confirmRequest(rejectedRequest).subscribe(
+      () => this.getRequests(),
+      err => console.log(err)
+    );
   }
 }

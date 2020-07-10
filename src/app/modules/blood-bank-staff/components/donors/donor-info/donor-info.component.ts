@@ -1,10 +1,10 @@
-import { DonorService } from './../../../services/donor.service';
+import { DonorService } from '../../../../../core/services/donor.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DonorComponent } from '../donor/donor.component';
-import { Donor } from '../../../models/donor';
 import { ActivityComponent } from '../../donor-activites/activity/activity.component';
+import { Donor } from 'src/app/core/models/donor';
 
 @Component({
   selector: 'app-donor-info',
@@ -24,16 +24,13 @@ export class DonorInfoComponent implements OnInit {
 
   ngOnInit() { }
 
-  addActivity() {
+  addActivity(donor: Donor) {
     this.router.navigate(['./activity'],
-      { queryParams: { id: 0, 'add-activity': true }, relativeTo: this.route });
+      { queryParams: { donor_Id: donor.id, id: 0, 'add-activity': true }, relativeTo: this.route });
     const dialogRef = this.dialog.open(ActivityComponent, {
       disableClose: true,
       autoFocus: true,
       width: '35%',
-    });
-    dialogRef.afterClosed().subscribe(() => {
-      this.router.navigate(['../../activities'], { relativeTo: this.route });
     });
   }
 
@@ -45,6 +42,10 @@ export class DonorInfoComponent implements OnInit {
       autoFocus: true,
       width: '35%',
       data: donor
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.getDonor(this.donor.ssn);
+      this.router.navigate(['./find-donor'], { queryParams: { id: this.donor.id }, relativeTo: this.route });
     });
   }
 
@@ -58,8 +59,25 @@ export class DonorInfoComponent implements OnInit {
 
   delete(donor: Donor) {
     this.donorService.deleteDonor(donor.id).subscribe(
-      () => console.log('Donor Deleted Successfully'),
+      () => {
+        this.router.navigate(['./donors'], { relativeTo: this.route });
+        console.log('Donor Deleted Successfully');
+      },
       err => console.log(err)
+    );
+  }
+
+  getDonor(ssn: string) {
+    this.donorService.getDonorBySSN(ssn).subscribe(
+      (data: Donor) => {
+        this.donor = data;
+        if (this.donor) {
+          this.router.navigate(['./find-donor'], { queryParams: { id: this.donor.id }, relativeTo: this.route });
+        }
+      },
+      err => {
+        console.log(err);
+      }
     );
   }
 }

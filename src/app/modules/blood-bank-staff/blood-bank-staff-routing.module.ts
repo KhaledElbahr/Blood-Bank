@@ -1,3 +1,4 @@
+import { HandleRequestComponent } from './components/requests/handle-request/handle-request.component';
 import { DonorInfoComponent } from './components/donors/donor-info/donor-info.component';
 import { BloodProductComponent } from './components/blood-products/blood-product/blood-product.component';
 import { BloodProductsComponent } from './components/blood-products/blood-products.component';
@@ -33,6 +34,7 @@ const bbRoutes: Routes = [
       {
         path: 'activities', component: DonorActivitesComponent, children: [
           { path: 'activity', component: ActivityComponent, canDeactivate: [] },
+          { path: 'product', component: BloodProductComponent, canDeactivate: [] },
         ]
       },
       {
@@ -40,7 +42,11 @@ const bbRoutes: Routes = [
           { path: 'product', component: BloodProductComponent, canDeactivate: [] },
         ]
       },
-      { path: 'requests', component: RequestsComponent },
+      {
+        path: 'requests', component: RequestsComponent, children: [
+          { path: 'handle-request', component: HandleRequestComponent, canDeactivate: [] },
+        ]
+      },
       { path: 'approved-requests', component: ApprovedRequestsComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]

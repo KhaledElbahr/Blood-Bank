@@ -7,7 +7,11 @@
       </mat-list-item>
       <mat-list-item role="listitem"
         ><mat-icon>email</mat-icon>
-        <p>{{ donor.blood_group_id }}</p>
+        <p>{{ donor.blood_group }}</p>
+      </mat-list-item>
+      <mat-list-item role="listitem"
+        ><mat-icon>person</mat-icon>
+        <p>{{ donor.donor_type_id.id === 1 ? "Student" : "External Donor" }}</p>
       </mat-list-item>
       <mat-list-item role="listitem" *ngIf="donor.email"
         ><mat-icon>email</mat-icon>
@@ -20,7 +24,7 @@
     </mat-list>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="addActivity()">
+    <button mat-raised-button color="primary" (click)="addActivity(donor)">
       ADD Activity
     </button>
     <button

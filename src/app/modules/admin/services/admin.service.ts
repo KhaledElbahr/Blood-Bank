@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { User } from 'src/app/core/models/user';
+import { Donor } from 'src/app/core/models/donor';
 
 @Injectable({
   providedIn: 'root'
@@ -78,6 +79,16 @@ export class AdminService {
   deleteUser(uid: number): Observable<any> {
     return this.http.delete<any>(`${this.url}/${uid}`, { headers: this.headers }).pipe(
       map((data: any) => {
+        return data;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  getStudents(): Observable<Donor[]> {
+    return this.http.get<Donor[]>('http://localhost:8000/api/import_excel', { headers: this.headers }).pipe(
+      map((data: Donor[]) => {
+        console.log(data);
         return data;
       }),
       catchError(this.handleError)

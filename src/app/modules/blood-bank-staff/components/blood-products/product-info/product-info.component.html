@@ -1,14 +1,6 @@
 <mat-card *ngIf="product">
   <mat-card-content>
     <mat-list role="list">
-      <mat-list-item role="listitem">
-        <mat-icon>persons</mat-icon>
-        <p>{{ product.donor_activity_id }}</p>
-      </mat-list-item>
-      <mat-list-item role="listitem"
-        ><mat-icon>email</mat-icon>
-        <p>{{ product.barcode }}</p>
-      </mat-list-item>
       <mat-list-item role="listitem"
         ><mat-icon>work</mat-icon>
         <p>{{ product.product_type }}</p>
@@ -24,9 +16,6 @@
     </mat-list>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="addProduct()">
-      ADD Activity
-    </button>
     <button
       class="btn-edit"
       mat-raised-button

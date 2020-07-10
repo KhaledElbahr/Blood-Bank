@@ -16,12 +16,23 @@ export class BloodProductComponent implements OnInit {
   pageTitle = 'Edit Product';
   bloodProductForm: FormGroup;
   product: BloodProduct;
-  bloodGroups: { id: number, value: string }[];
+  activityId: number;
 
   productTypes = [
     { id: 1, value: 'whole blood' },
     { id: 2, value: 'plasma' },
     { id: 3, value: 'platelet' }
+  ];
+
+  bloodGroups = [
+    { id: 1, value: 'O+' },
+    { id: 2, value: 'O-' },
+    { id: 3, value: 'A+' },
+    { id: 4, value: 'A-' },
+    { id: 5, value: 'B+' },
+    { id: 6, value: 'B-' },
+    { id: 7, value: 'AB+' },
+    { id: 8, value: 'AB-' }
   ];
 
   storageLocs = [
@@ -37,34 +48,33 @@ export class BloodProductComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private location: Location,
-    private bloodService: BoodGroupService,
     private bloodProductService: BloodProductService,
     public dialogRef: MatDialogRef<BloodProductComponent>
   ) { }
 
   ngOnInit(): void {
-    this.getBloodGroups();
-    this.bloodProductForm = this.fb.group({
-      barcode: [null, Validators.required],
-      product_type: [null, Validators.required],
-      storage_location: [null, Validators.required],
-      blood_group: [null, Validators.required],
-      // donor_activity_id: [null, Validators.required]
-    });
-
     // Read the product Id from the route parameter
     this.route.queryParamMap.subscribe(
       params => {
         const id = +params.get('id');
+        this.activityId = +params.get('activity_id');
         this.getProduct(id);
       }
     );
+
+    this.bloodProductForm = this.fb.group({
+      barcode: [null, Validators.required],
+      product_type_id: [null, Validators.required],
+      storage_location_id: [null, Validators.required],
+      blood_group_id: [null, Validators.required],
+      donor_activity_id: this.activityId
+    });
   }
 
   get barcode() { return this.bloodProductForm.get('barcode'); }
-  get product_type() { return this.bloodProductForm.get('donationType'); }
-  get storage_location() { return this.bloodProductForm.get('storage_location'); }
-  get blood_group() { return this.bloodProductForm.get('blood_group'); }
+  get product_type_id() { return this.bloodProductForm.get('product_type_id'); }
+  get storage_location_id() { return this.bloodProductForm.get('storage_location_id'); }
+  get blood_group_id() { return this.bloodProductForm.get('blood_group_id'); }
 
   getProduct(id: number): void {
     this.bloodProductService.getProduct(id).subscribe({
@@ -87,9 +97,10 @@ export class BloodProductComponent implements OnInit {
     this.bloodProductForm.patchValue(
       {
         barcode: this.product.barcode,
-        product_type: this.product.product_type,
-        storage_location: this.product.storage_location,
-        blood_group: this.product.blood_group
+        product_type_id: this.product.product_type_id,
+        storage_location_id: this.product.storage_location_id,
+        blood_group_id: this.product.blood_group_id,
+        donor_activity_id: this.product.donor_activity_id
       }
     );
   }
@@ -138,13 +149,4 @@ export class BloodProductComponent implements OnInit {
     });
   }
 
-
-  getBloodGroups() {
-    this.bloodService.getBloodGroups().subscribe(
-      (data: { id: number, value: string }[]) => {
-        this.bloodGroups = data;
-      },
-      err => console.log(err)
-    );
-  }
 }

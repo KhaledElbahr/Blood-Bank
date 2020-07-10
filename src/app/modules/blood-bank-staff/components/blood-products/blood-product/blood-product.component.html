@@ -41,18 +41,18 @@
             <!-- Type of Donation -->
             <div class="form-group">
               <mat-radio-group
-                formControlName="product_type"
+                formControlName="product_type_id"
                 aria-label="Select an option"
               >
                 <mat-radio-button
                   type="radio"
-                  *ngFor="let product_type of productTypes"
-                  [value]="product_type.id"
-                  >{{ product_type.value | uppercase }}</mat-radio-button
+                  *ngFor="let product_type_id of productTypes"
+                  [value]="product_type_id.id"
+                  >{{ product_type_id.value | uppercase }}</mat-radio-button
                 >
                 <mat-error
                   *ngIf="
-                    product_type.hasError('required') && product_type.touched
+                  product_type_id.hasError('required') && product_type_id.touched
                   "
                 >
                   Product Type is required
@@ -63,7 +63,7 @@
             <div class="form-group">
               <mat-form-field>
                 <mat-label>Storage Location</mat-label>
-                <mat-select formControlName="storage_location">
+                <mat-select formControlName="storage_location_id">
                   <mat-option
                     *ngFor="let storage_location of storageLocs"
                     [value]="storage_location.id"
@@ -76,7 +76,7 @@
             <!-- Blood Group -->
             <mat-form-field class="select-control">
               <mat-label>Blood Group</mat-label>
-              <mat-select formControlName="blood_group" required>
+              <mat-select formControlName="blood_group_id" required>
                 <mat-option
                   *ngFor="let blood_group of bloodGroups"
                   [value]="blood_group.id"
@@ -107,6 +107,8 @@
                 Cancel
               </button>
             </mat-dialog-actions>
+
+            <p>{{bloodProductForm.value | json}}</p>
           </form>
         </mat-dialog-content>
       </div>

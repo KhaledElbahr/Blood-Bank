@@ -29,12 +29,23 @@ export class DonorActivityService {
     );
   }
 
-  getActivity(id: number): Observable<DonorActivity> {
+  getDonorActivities(): Observable<DonorActivity[]> {
+    return this.http.get<DonorActivity[]>('http://127.0.0.1:8000/api/donor_activities', { headers: this.headers }).pipe(
+      map((data: DonorActivity[]) => {
+        console.log(data);
+        return data;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  getActivity(id: number): Observable<any> {
     if (id === 0) {
       return of(this.initializeActivity());
     }
-    return this.http.get<DonorActivity>(`${this.url}/${id}`, { headers: this.headers }).pipe(
-      map((data: DonorActivity) => {
+    console.log(id);
+    return this.http.get<any>(`${this.url}/${id}`, { headers: this.headers }).pipe(
+      map((data: any) => {
         console.log(data);
         return data;
       }),
@@ -68,7 +79,7 @@ export class DonorActivityService {
   }
 
   deleteActivity(id: number) {
-    return this.http.delete(`${this.url}/${id}`).pipe(
+    return this.http.delete(`${this.url}/${id}`, { headers: this.headers }).pipe(
       map((data: any) => {
         return data;
       }),
@@ -81,10 +92,13 @@ export class DonorActivityService {
     return {
       id: 0,
       donor_id: 0,
+      first_name: null,
+      last_name: null,
       full_name: null,
-      product_type: { id: 0, value: null },
-      viruses: null,
-      temp: null,
+      product_type_id: { id: 0, value: null },
+      product_type: null,
+      viruses: [{ id: 0, name: null }],
+      temperature: null,
       weight: null,
       height: null,
       status: { id: 0, value: null },

@@ -1,0 +1,43 @@
+<section class="edit-profile">
+  <div class="content-wrapper">
+    <div class="contact-section-heading">
+      <h2 class="heading-primary" mat-dialog-title>
+        Upload Students Execl File
+      </h2>
+    </div>
+    <main>
+      <div class="edit-profile-form">
+        <mat-dialog-content>
+          <div class="form-group">
+            <input
+              class="control-input"
+              type="file"
+              accept=".xlsx, .xls"
+              (change)="onChooseFile($event)"
+              placeholder="Choose Execl File"
+              required
+            />
+          </div>
+
+          <mat-dialog-actions>
+            <button
+              class="mat-raised-button mat-primary"
+              [disabled]="!selectedFile"
+              (click)="onUploadFile()"
+            >
+              Upload File
+            </button>
+
+            <button
+              class="mat-raised-button mat-accent"
+              title="Cancel your data"
+              (click)="onCancel()"
+            >
+              Cancel
+            </button>
+          </mat-dialog-actions>
+        </mat-dialog-content>
+      </div>
+    </main>
+  </div>
+</section>

@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './layout/admin.component';
 import { EditProfileComponent } from './components/dashboard/edit-profile/edit-profile.component';
+import { StudentsComponent } from './components/students/students.component';
+import { StudentComponent } from './components/students/student/student.component';
 
 const adminRoutes: Routes = [
   {
@@ -19,6 +21,11 @@ const adminRoutes: Routes = [
       {
         path: 'users', component: UsersComponent, children: [
           { path: 'user', component: UserComponent, canDeactivate: [] },
+        ]
+      },
+      {
+        path: 'students', component: StudentsComponent, children: [
+          { path: 'upload-student', component: StudentComponent, canDeactivate: [] },
         ]
       },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }

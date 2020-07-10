@@ -111,14 +111,9 @@ export class UserComponent implements OnInit {
     }
   }
 
-  applyNavigation() {
-    this.userForm.reset();
-    // this.router.navigate(['./home/users'], { queryParams: null, relativeTo: this.route });
-  }
+  applyNavigation() { this.userForm.reset(); }
 
-  onCancel() {
-    this.onClose();
-  }
+  onCancel() { this.onClose(); }
 
   onClose(): void {
     this.dialogRef.close();

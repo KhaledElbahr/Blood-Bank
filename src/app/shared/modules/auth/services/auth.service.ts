@@ -3,6 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
+interface AccessData {
+  success: {
+    token: string;
+    user_type: string;
+    user_type_id: number;
+    id: number;
+  };
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -25,7 +34,7 @@ export class AuthService {
 
   login(loginInfo): Observable<any> {
     return this.http.post('http://localhost:8000/api/login', loginInfo).pipe(
-      map((data) => {
+      map((data: AccessData) => {
         // const userType = data.success.user_type;
         const access = {
           user_type: data.success.user_type,

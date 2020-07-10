@@ -8,5 +8,6 @@ export interface Donor {
   email?: string;
   ssn: string;
   blood_group_id: { id: number, value: string };
-  // address?: string;
+  blood_group: string;
+  donor_type_id: {id: number, value: string};
 }

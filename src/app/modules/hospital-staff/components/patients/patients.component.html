@@ -39,7 +39,7 @@
 
 <mat-divider></mat-divider>
 <br />
-<div class="profile" *ngIf="(!HasPatient)">
+<div class="profile" *ngIf="!(HasPatient)">
   <h2>There is No Patient With This SSN</h2>
 </div>
 <div class="profile" #patientInfo *ngIf="(HasPatient); else addPatient">

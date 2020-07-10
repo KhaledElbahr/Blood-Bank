@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Donor } from './../../../models/donor';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 import { BoodGroupService } from 'src/app/core/services/bood-group.service';
-import { DonorService } from '../../../services/donor.service';
+import { DonorService } from '../../../../../core/services/donor.service';
 import { Location } from '@angular/common';
+import { Donor } from 'src/app/core/models/donor';
 
 @Component({
   selector: 'app-donor',
