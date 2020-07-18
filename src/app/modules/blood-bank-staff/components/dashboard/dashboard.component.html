@@ -2,28 +2,78 @@
 <br />
 <mat-divider></mat-divider>
 <br />
-<mat-grid-list [cols]="columnNum" rowHeight="65px" gutterSize="20px">
-  <mat-grid-tile [colspan]="cols">
-    <mat-card>
-      <p class="card-category">VOLUNTEERS</p>
-      <!-- <h3 class="card-title">{{ state.volunteers }}</h3> -->
-    </mat-card>
-  </mat-grid-tile>
-
-  <mat-grid-tile [colspan]="cols">
-    <mat-card>
-      <p class="card-category">ALL ARTICLES</p>
-      <!-- <h3 class="card-title">{{ state.articles }}</h3> -->
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="cols">
-    <mat-card>
-      <p class="card-category">CONTACTS</p>
-      <!-- <h3 class="card-title">{{ state.contacts }}</h3> -->
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
-<br />
+<div
+  class="stats-card"
+  fxLayoutAlign="space-between center"
+  fxLayout="row wrap"
+  fxLayoutGap="20px"
+>
+  <mat-card fxFlex="30">
+    <h3 class="card-category">DONORS</h3>
+    <p class="card-title">{{ 16 }}</p>
+  </mat-card>
+  <mat-card fxFlex="30">
+    <h3 class="card-category">REQUESTS</h3>
+    <p class="card-title">{{ 20 }}</p>
+  </mat-card>
+  <mat-card fxFlex="30">
+    <h3 class="card-category">HANDLED REQUESTS</h3>
+    <p class="card-title">{{ 13 }}</p>
+  </mat-card>
+  <mat-card fxFlex="40">
+    <h3 class="card-category">BLOOD BAGS</h3>
+    <p class="card-title">{{ 50 }}</p>
+  </mat-card>
+  <mat-card fxFlex="40">
+    <h3 class="card-category">EXPAIRED BLOOD BAGS</h3>
+    <p class="card-title">{{ 10 }}</p>
+  </mat-card>
+  <mat-card fxFlex="30">
+    <h3 class="card-category">WHOLE BLOOD</h3>
+    <p class="card-title">{{ 30 }}</p>
+  </mat-card>
+  <mat-card fxFlex="30">
+    <h3 class="card-category">PLASMA</h3>
+    <p class="card-title">{{ 10 }}</p>
+  </mat-card>
+  <mat-card fxFlex="30">
+    <h3 class="card-category">PLATELET</h3>
+    <p class="card-title">{{ 10 }}</p>
+  </mat-card>
+  <mat-card fxFlex="10">
+    <h3 class="card-category">O+</h3>
+    <p class="card-title">{{ 5 }}</p>
+  </mat-card>
+  <mat-card fxFlex="10">
+    <h3 class="card-category">O-</h3>
+    <p class="card-title">{{ 3 }}</p>
+  </mat-card>
+  <mat-card fxFlex="10">
+    <h3 class="card-category">A+</h3>
+    <p class="card-title">{{ 7 }}</p>
+  </mat-card>
+  <mat-card fxFlex="10">
+    <h3 class="card-category">A-</h3>
+    <p class="card-title">{{ 8 }}</p>
+  </mat-card>
+  <mat-card fxFlex="10">
+    <h3 class="card-category">B+</h3>
+    <p class="card-title">{{ 9 }}</p>
+  </mat-card>
+  <mat-card fxFlex="10">
+    <h3 class="card-category">B-</h3>
+    <p class="card-title">{{ 5 }}</p>
+  </mat-card>
+  <mat-card fxFlex="10">
+    <h3 class="card-category">AB+</h3>
+    <p class="card-title">{{ 8 }}</p>
+  </mat-card>
+  <mat-card fxFlex="10">
+    <h3 class="card-category">AB-</h3>
+    <p class="card-title">{{ 5 }}</p>
+  </mat-card>
+  <br />
+</div>
 <mat-divider></mat-divider>
 <br />
 <div class="profile">

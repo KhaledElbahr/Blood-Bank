@@ -6,7 +6,7 @@ import { Patient } from 'src/app/core/models/patient';
 import { RequestComponent } from '../../requests/request/request.component';
 
 @Component({
-  selector: 'app-patient',
+  selector: 'app-doctor-patient',
   templateUrl: './patient.component.html',
   styleUrls: ['./patient.component.scss']
 })
@@ -33,8 +33,8 @@ export class PatientComponent implements OnInit {
       autoFocus: true,
       width: '35%',
     });
-    dialogRef.afterClosed().subscribe(() => {
-      this.router.navigate(['../../requests'], { relativeTo: this.route });
-    });
+    // dialogRef.afterClosed().subscribe(() => {
+    //   this.router.navigate(['../../requests'], { relativeTo: this.route });
+    // });
   }
 }

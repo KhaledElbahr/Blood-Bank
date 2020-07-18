@@ -14,7 +14,7 @@ export class PatientsComponent implements OnInit {
   searchKey: string;
   patient: Patient;
   HasPatient: boolean;
-  
+
   constructor(
     private patientService: PatientService,
     private router: Router,

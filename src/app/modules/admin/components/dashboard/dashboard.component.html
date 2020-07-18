@@ -2,27 +2,21 @@
 <br />
 <mat-divider></mat-divider>
 <br />
-<mat-grid-list [cols]="columnNum" rowHeight="65px" gutterSize="20px">
-  <mat-grid-tile [colspan]="cols">
-    <mat-card>
-      <p class="card-category">VOLUNTEERS</p>
-      <!-- <h3 class="card-title">{{ state.volunteers }}</h3> -->
-    </mat-card>
-  </mat-grid-tile>
-
-  <mat-grid-tile [colspan]="cols">
-    <mat-card>
-      <p class="card-category">ALL ARTICLES</p>
-      <!-- <h3 class="card-title">{{ state.articles }}</h3> -->
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="cols">
-    <mat-card>
-      <p class="card-category">CONTACTS</p>
-      <!-- <h3 class="card-title">{{ state.contacts }}</h3> -->
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<div
+  class="stats-card"
+  fxLayoutAlign="space-between center"
+  fxLayout="row"
+  fxLayoutGap="20px"
+>
+  <mat-card fxFlex="50">
+    <h3 class="card-category">USERS</h3>
+    <p class="card-title">{{ 4 }}</p>
+  </mat-card>
+  <mat-card fxFlex="50">
+    <h3 class="card-category">STUDENTS</h3>
+    <p class="card-title">{{ 100 }}</p>
+  </mat-card>
+</div>
 <br />
 <mat-divider></mat-divider>
 <br />

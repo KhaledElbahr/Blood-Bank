@@ -4,7 +4,7 @@ import { Request } from './../../../../../core/models/request';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequestService } from './../../../services/request.service';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Location } from '@angular/common';
+import { Location, formatDate } from '@angular/common';
 
 // import {
 //   NativeDateAdapter, DateAdapter,
@@ -73,12 +73,9 @@ export class RequestComponent implements OnInit {
     private route: ActivatedRoute,
     private requestService: RequestService,
     public dialogRef: MatDialogRef<RequestComponent>) {
-    // Set the minimum to January 1st 2020
-    const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth();
-    const currentDay = new Date().getDay();
-
-    this.minDate = new Date(currentYear, currentMonth, currentDay);
+    // Set the minimum to Current Date
+    const currentDate = new Date();
+    this.minDate = new Date(currentDate);
   }
 
   ngOnInit(): void {
@@ -98,15 +95,6 @@ export class RequestComponent implements OnInit {
       required_date: [null, Validators.required],
       priority: [null, Validators.required],
     });
-
-    // // Read the Request from the route parameter
-    // this.route.queryParamMap.subscribe(
-    //   params => {
-    //     const id = +params.get('rId');
-    //     this.patientId = +params.get('pId');
-    //     this.getRequest(id);
-    //   }
-    // );
   }
 
   get product_type_id() { return this.requestForm.get('product_type_id'); }

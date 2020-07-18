@@ -21,7 +21,7 @@ const doctorRoutes: Routes = [
       },
       {
         path: 'patients', component: PatientsComponent, children: [
-          { path: 'patient/:id', component: PatientComponent },
+          { path: 'patient', component: PatientComponent },
           { path: 'request', component: RequestComponent, canDeactivate: [] }
         ]
       },

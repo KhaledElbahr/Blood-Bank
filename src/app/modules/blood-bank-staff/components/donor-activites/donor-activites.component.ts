@@ -32,7 +32,7 @@ export class DonorActivitesComponent implements OnInit {
     'temperature',
     'weight',
     'height',
-    'statusValue',
+    'status',
     'comments',
     'actions'
   ];

@@ -52,7 +52,8 @@
                 >
                 <mat-error
                   *ngIf="
-                  product_type_id.hasError('required') && product_type_id.touched
+                    product_type_id.hasError('required') &&
+                    product_type_id.touched
                   "
                 >
                   Product Type is required
@@ -107,8 +108,6 @@
                 Cancel
               </button>
             </mat-dialog-actions>
-
-            <p>{{bloodProductForm.value | json}}</p>
           </form>
         </mat-dialog-content>
       </div>

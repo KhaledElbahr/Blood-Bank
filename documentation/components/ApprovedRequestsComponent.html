@@ -1,0 +1,1100 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>blood-bank documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">blood-bank documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>ApprovedRequestsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/blood-bank-staff/components/approved-requests/approved-requests.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-approved-requests</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./approved-requests.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./approved-requests.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#dataSource">dataSource</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog">dialog</a>
+                            </li>
+                            <li>
+                                <a href="#displayedColumns">displayedColumns</a>
+                            </li>
+                            <li>
+                                <a href="#paginator">paginator</a>
+                            </li>
+                            <li>
+                                <a href="#requests">requests</a>
+                            </li>
+                            <li>
+                                <a href="#searchKey">searchKey</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#applyFilter">applyFilter</a>
+                            </li>
+                            <li>
+                                <a href="#deleteRequest">deleteRequest</a>
+                            </li>
+                            <li>
+                                <a href="#getApprovedRequests">getApprovedRequests</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onSearchClear">onSearchClear</a>
+                            </li>
+                            <li>
+                                <a href="#removeRequest">removeRequest</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, dialog: MatDialog, requestsService: <a href="../injectables/RequestsService.html">RequestsService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/modules/blood-bank-staff/components/approved-requests/approved-requests.component.ts:31</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>requestsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RequestsService.html" target="_self" >RequestsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="applyFilter"></a>
+                    <span class="name">
+                        <b>
+                            applyFilter
+                        </b>
+                        <a href="#applyFilter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>applyFilter()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/app/modules/blood-bank-staff/components/approved-requests/approved-requests.component.ts:44</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteRequest"></a>
+                    <span class="name">
+                        <b>
+                            deleteRequest
+                        </b>
+                        <a href="#deleteRequest"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteRequest(request: <a href="../interfaces/Request.html">Request</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/app/modules/blood-bank-staff/components/approved-requests/approved-requests.component.ts:61</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>request</td>
+                                    <td>
+                                                <code><a href="../interfaces/Request.html" target="_self" >Request</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getApprovedRequests"></a>
+                    <span class="name">
+                        <b>
+                            getApprovedRequests
+                        </b>
+                        <a href="#getApprovedRequests"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getApprovedRequests()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/app/modules/blood-bank-staff/components/approved-requests/approved-requests.component.ts:68</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">src/app/modules/blood-bank-staff/components/approved-requests/approved-requests.component.ts:39</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSearchClear"></a>
+                    <span class="name">
+                        <b>
+                            onSearchClear
+                        </b>
+                        <a href="#onSearchClear"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSearchClear()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/modules/blood-bank-staff/components/approved-requests/approved-requests.component.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeRequest"></a>
+                    <span class="name">
+                        <b>
+                            removeRequest
+                        </b>
+                        <a href="#removeRequest"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>removeRequest(request: <a href="../interfaces/Request.html">Request</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">src/app/modules/blood-bank-staff/components/approved-requests/approved-requests.component.ts:53</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>request</td>
+                                    <td>
+                                                <code><a href="../interfaces/Request.html" target="_self" >Request</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dataSource"></a>
+                        <span class="name">
+                            <b>
+                            dataSource</b>
+                            <a href="#dataSource"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new MatTableDataSource&lt;Request&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/blood-bank-staff/components/approved-requests/approved-requests.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialog"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dialog</b>
+                            <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MatDialog</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/modules/blood-bank-staff/components/approved-requests/approved-requests.component.ts:36</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="displayedColumns"></a>
+                        <span class="name">
+                            <b>
+                            displayedColumns</b>
+                            <a href="#displayedColumns"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>string[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[
+    &#x27;patient_id&#x27;,
+    &#x27;full_name&#x27;,
+    &#x27;product_type&#x27;,
+    &#x27;blood_group&#x27;,
+    &#x27;quantity&#x27;,
+    &#x27;created_at&#x27;,
+    &#x27;required_date&#x27;,
+    &#x27;status&#x27;,
+    &#x27;priority&#x27;,
+    &#x27;actions&#x27;
+  ]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/blood-bank-staff/components/approved-requests/approved-requests.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="paginator"></a>
+                        <span class="name">
+                            <b>
+                            paginator</b>
+                            <a href="#paginator"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MatPaginator</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(MatPaginator, {static: true})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/modules/blood-bank-staff/components/approved-requests/approved-requests.component.ts:31</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="requests"></a>
+                        <span class="name">
+                            <b>
+                            requests</b>
+                            <a href="#requests"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Request.html" target="_self" >Request[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/blood-bank-staff/components/approved-requests/approved-requests.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="searchKey"></a>
+                        <span class="name">
+                            <b>
+                            searchKey</b>
+                            <a href="#searchKey"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/modules/blood-bank-staff/components/approved-requests/approved-requests.component.ts:29</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+import { MatTableDataSource } from &#x27;@angular/material/table&#x27;;
+import { MatPaginator } from &#x27;@angular/material/paginator&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
+import { Request } from &#x27;./../../../../core/models/request&#x27;;
+import { RequestsService } from &#x27;../../services/requests.service&#x27;;
+
+@Component({
+  selector: &#x27;app-approved-requests&#x27;,
+  templateUrl: &#x27;./approved-requests.component.html&#x27;,
+  styleUrls: [&#x27;./approved-requests.component.scss&#x27;]
+})
+export class ApprovedRequestsComponent implements OnInit {
+  requests: Request[];
+  displayedColumns: string[] &#x3D; [
+    &#x27;patient_id&#x27;,
+    &#x27;full_name&#x27;,
+    &#x27;product_type&#x27;,
+    &#x27;blood_group&#x27;,
+    &#x27;quantity&#x27;,
+    &#x27;created_at&#x27;,
+    &#x27;required_date&#x27;,
+    &#x27;status&#x27;,
+    &#x27;priority&#x27;,
+    &#x27;actions&#x27;
+  ];
+  dataSource &#x3D; new MatTableDataSource&lt;Request&gt;();
+  searchKey: string;
+
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    public dialog: MatDialog,
+    private requestsService: RequestsService) { }
+
+  ngOnInit() {
+    this.dataSource.paginator &#x3D; this.paginator;
+    this.getApprovedRequests();
+  }
+
+  applyFilter() {
+    this.dataSource.filter &#x3D; this.searchKey.trim().toLowerCase();
+  }
+
+  onSearchClear() {
+    this.searchKey &#x3D; &#x27;&#x27;;
+    this.applyFilter();
+  }
+
+  removeRequest(request: Request): void {
+    console.log(request.id);
+    const confirmation &#x3D; window.confirm(&#x27;Are you sure you want to remove this Request?&#x27;);
+    if (confirmation) {
+      this.deleteRequest(request);
+    }
+  }
+
+  deleteRequest(request: Request) {
+    this.requestsService.deleteHandledRequest(request.id).subscribe(
+      () &#x3D;&gt; this.getApprovedRequests(),
+      err &#x3D;&gt; console.log(err)
+    );
+  }
+
+  getApprovedRequests() {
+    this.requestsService.getApprovedRequests().subscribe(
+      (data: Request[]) &#x3D;&gt; {
+        this.requests &#x3D; data;
+        this.dataSource &#x3D; new MatTableDataSource&lt;Request&gt;(this.requests);
+      },
+      err &#x3D;&gt; console.log(err)
+    );
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;section&gt;
+  &lt;h1&gt;Blood Requests&lt;/h1&gt;
+  &lt;br /&gt;
+  &lt;mat-divider&gt;&lt;/mat-divider&gt;
+  &lt;br /&gt;
+  &lt;div class&#x3D;&quot;search-area&quot;&gt;
+    &lt;mat-form-field class&#x3D;&quot;search-form-field&quot; floatLabel&#x3D;&quot;never&quot;&gt;
+      &lt;input
+        matInput
+        type&#x3D;&quot;text&quot;
+        [(ngModel)]&#x3D;&quot;searchKey&quot;
+        name&#x3D;&quot;searchKey&quot;
+        (keyup)&#x3D;&quot;applyFilter()&quot;
+        placeholder&#x3D;&quot;Search&quot;
+        autocomplete&#x3D;&quot;off&quot;
+      /&gt;
+      &lt;button
+        mat-button
+        matSuffix
+        mat-icon-button
+        aria-label&#x3D;&quot;Clear&quot;
+        *ngIf&#x3D;&quot;searchKey&quot;
+        (click)&#x3D;&quot;onSearchClear()&quot;
+      &gt;
+        &lt;mat-icon&gt;close&lt;/mat-icon&gt;
+      &lt;/button&gt;
+    &lt;/mat-form-field&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;mat-elevation-z8&quot;&gt;
+    &lt;table mat-table [dataSource]&#x3D;&quot;dataSource&quot;&gt;
+      &lt;!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition&quot; --&gt;
+
+      &lt;!-- Patient Id Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;patient_id&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt;Patient Id&lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;{{ element.patient_id }}&lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Patient Name Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;full_name&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt;Patient Name&lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+          {{ element.full_name }}
+        &lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Product Type Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;product_type&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt;Product Type&lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+          {{ element.product_type }}
+        &lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Blood Group Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;blood_group&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt;Blood Group&lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+          {{ element.blood_group }}
+        &lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Quantity Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;quantity&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt;Quantity&lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+          {{ element.quantity }}
+        &lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Requested Date Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;created_at&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt;Requested Date&lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+          {{ element.created_at | date: &quot;d-M-y, h:mm a&quot; }}
+        &lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Required Date Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;required_date&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt;Required Date&lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+          {{ element.required_date | date: &quot;d-M-y, h:mm a&quot; }}
+        &lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Request Status Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;status&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt;Status&lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+          {{ element.status &#x3D;&#x3D;&#x3D; 0 ? &quot;In Progress&quot; : &quot;Handled&quot; }}
+        &lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Priority Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;priority&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt;Priority&lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+          {{ element.priority &#x3D;&#x3D;&#x3D; 1 ? &quot;Normal&quot; : &quot;Critical&quot; }}
+        &lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Actions Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;actions&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt;&lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+          &lt;button mat-icon-button color&#x3D;&quot;warn&quot; (click)&#x3D;&quot;removeRequest(element)&quot;&gt;
+            &lt;mat-icon&gt;delete&lt;/mat-icon&gt;
+          &lt;/button&gt;
+        &lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;tr mat-header-row *matHeaderRowDef&#x3D;&quot;displayedColumns&quot;&gt;&lt;/tr&gt;
+      &lt;tr mat-row *matRowDef&#x3D;&quot;let row; columns: displayedColumns&quot;&gt;&lt;/tr&gt;
+    &lt;/table&gt;
+
+    &lt;!-- &lt;mat-paginator
+      [pageSizeOptions]&#x3D;&quot;[5, 10, 20]&quot;
+      showFirstLastButtons
+    &gt;&lt;/mat-paginator&gt; --&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./approved-requests.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">table {
+  width: 100%;
+}
+
+.search-form-field {
+  width: 50%;
+  margin: 0 1rem;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><section>  <h1>Blood Requests</h1>  <br />  <mat-divider></mat-divider>  <br />  <div class="search-area">    <mat-form-field class="search-form-field" floatLabel="never">      <input        matInput        type="text"        [(ngModel)]="searchKey"        name="searchKey"        (keyup)="applyFilter()"        placeholder="Search"        autocomplete="off"      />      <button        mat-button        matSuffix        mat-icon-button        aria-label="Clear"        *ngIf="searchKey"        (click)="onSearchClear()"      >        <mat-icon>close</mat-icon>      </button>    </mat-form-field>  </div>  <div class="mat-elevation-z8">    <table mat-table [dataSource]="dataSource">      <!--- Note that these columns can be defined in any order.              The actual rendered columns are set as a property on the row definition" -->      <!-- Patient Id Column -->      <ng-container matColumnDef="patient_id">        <th mat-header-cell *matHeaderCellDef>Patient Id</th>        <td mat-cell *matCellDef="let element">{{ element.patient_id }}</td>      </ng-container>      <!-- Patient Name Column -->      <ng-container matColumnDef="full_name">        <th mat-header-cell *matHeaderCellDef>Patient Name</th>        <td mat-cell *matCellDef="let element">          {{ element.full_name }}        </td>      </ng-container>      <!-- Product Type Column -->      <ng-container matColumnDef="product_type">        <th mat-header-cell *matHeaderCellDef>Product Type</th>        <td mat-cell *matCellDef="let element">          {{ element.product_type }}        </td>      </ng-container>      <!-- Blood Group Column -->      <ng-container matColumnDef="blood_group">        <th mat-header-cell *matHeaderCellDef>Blood Group</th>        <td mat-cell *matCellDef="let element">          {{ element.blood_group }}        </td>      </ng-container>      <!-- Quantity Column -->      <ng-container matColumnDef="quantity">        <th mat-header-cell *matHeaderCellDef>Quantity</th>        <td mat-cell *matCellDef="let element">          {{ element.quantity }}        </td>      </ng-container>      <!-- Requested Date Column -->      <ng-container matColumnDef="created_at">        <th mat-header-cell *matHeaderCellDef>Requested Date</th>        <td mat-cell *matCellDef="let element">          {{ element.created_at | date: "d-M-y, h:mm a" }}        </td>      </ng-container>      <!-- Required Date Column -->      <ng-container matColumnDef="required_date">        <th mat-header-cell *matHeaderCellDef>Required Date</th>        <td mat-cell *matCellDef="let element">          {{ element.required_date | date: "d-M-y, h:mm a" }}        </td>      </ng-container>      <!-- Request Status Column -->      <ng-container matColumnDef="status">        <th mat-header-cell *matHeaderCellDef>Status</th>        <td mat-cell *matCellDef="let element">          {{ element.status === 0 ? "In Progress" : "Handled" }}        </td>      </ng-container>      <!-- Priority Column -->      <ng-container matColumnDef="priority">        <th mat-header-cell *matHeaderCellDef>Priority</th>        <td mat-cell *matCellDef="let element">          {{ element.priority === 1 ? "Normal" : "Critical" }}        </td>      </ng-container>      <!-- Actions Column -->      <ng-container matColumnDef="actions">        <th mat-header-cell *matHeaderCellDef></th>        <td mat-cell *matCellDef="let element">          <button mat-icon-button color="warn" (click)="removeRequest(element)">            <mat-icon>delete</mat-icon>          </button>        </td>      </ng-container>      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>    </table>    <!-- <mat-paginator      [pageSizeOptions]="[5, 10, 20]"      showFirstLastButtons    ></mat-paginator> -->  </div></section></div>'
+    var COMPONENTS = [{'name': 'ActivityComponent', 'selector': 'app-activity'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ApprovedRequestsComponent', 'selector': 'app-approved-requests'},{'name': 'BloodBankStaffComponent', 'selector': 'app-blood-bank-staff'},{'name': 'BloodProductComponent', 'selector': 'app-blood-product'},{'name': 'BloodProductsComponent', 'selector': 'app-blood-products'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DoctorComponent', 'selector': 'app-doctor'},{'name': 'DonorActivitesComponent', 'selector': 'app-donor-activites'},{'name': 'DonorActivitesComponent', 'selector': 'app-donor-activites'},{'name': 'DonorComponent', 'selector': 'app-donor'},{'name': 'DonorComponent', 'selector': 'app-donor'},{'name': 'DonorInfoComponent', 'selector': 'app-donor-info'},{'name': 'DonorsComponent', 'selector': 'app-donors'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HandleRequestComponent', 'selector': 'app-handle-request'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HospitalComponent', 'selector': 'app-hospital'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PatientComponent', 'selector': 'app-doctor-patient'},{'name': 'PatientComponent', 'selector': 'app-patient'},{'name': 'PatientInfoComponent', 'selector': 'app-patient-info'},{'name': 'PatientsComponent', 'selector': 'app-patients'},{'name': 'PatientsComponent', 'selector': 'app-patients'},{'name': 'ProductInfoComponent', 'selector': 'app-product-info'},{'name': 'ProfileInfoComponent', 'selector': 'admin-profile-info'},{'name': 'ProfileInfoComponent', 'selector': 'bbstaff-profile-info'},{'name': 'ProfileInfoComponent', 'selector': 'doctor-profile-info'},{'name': 'ProfileInfoComponent', 'selector': 'donor-profile-info'},{'name': 'ProfileInfoComponent', 'selector': 'hstaff-profile-info'},{'name': 'RequestComponent', 'selector': 'app-request'},{'name': 'RequestsComponent', 'selector': 'app-requests'},{'name': 'RequestsComponent', 'selector': 'app-requests'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'StudentComponent', 'selector': 'app-student'},{'name': 'StudentsComponent', 'selector': 'app-students'},{'name': 'UserComponent', 'selector': 'app-user'},{'name': 'UsersComponent', 'selector': 'app-users'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ApprovedRequestsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ApprovedRequestsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

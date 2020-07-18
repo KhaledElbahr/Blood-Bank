@@ -1,0 +1,710 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>blood-bank documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">blood-bank documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>ProfileInfoComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/admin/components/dashboard/profile-info/profile-info.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>admin-profile-info</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./profile-info.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./profile-info.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#admin">admin</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog">dialog</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getAdmin">getAdmin</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onEdit">onEdit</a>
+                            </li>
+                            <li>
+                                <a href="#onResetPassword">onResetPassword</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(dialog: MatDialog, adminService: <a href="../injectables/UserService.html">UserService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/admin/components/dashboard/profile-info/profile-info.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>adminService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAdmin"></a>
+                    <span class="name">
+                        <b>
+                            getAdmin
+                        </b>
+                        <a href="#getAdmin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAdmin()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/modules/admin/components/dashboard/profile-info/profile-info.component.ts:43</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="20"
+                            class="link-to-prism">src/app/modules/admin/components/dashboard/profile-info/profile-info.component.ts:20</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onEdit"></a>
+                    <span class="name">
+                        <b>
+                            onEdit
+                        </b>
+                        <a href="#onEdit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onEdit(admin: <a href="../interfaces/User.html">User</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">src/app/modules/admin/components/dashboard/profile-info/profile-info.component.ts:24</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>admin</td>
+                                    <td>
+                                                <code><a href="../interfaces/User.html" target="_self" >User</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onResetPassword"></a>
+                    <span class="name">
+                        <b>
+                            onResetPassword
+                        </b>
+                        <a href="#onResetPassword"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onResetPassword()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/modules/admin/components/dashboard/profile-info/profile-info.component.ts:34</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="admin"></a>
+                        <span class="name">
+                            <b>
+                            admin</b>
+                            <a href="#admin"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/User.html" target="_self" >User</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/admin/components/dashboard/profile-info/profile-info.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialog"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dialog</b>
+                            <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MatDialog</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/modules/admin/components/dashboard/profile-info/profile-info.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
+import { EditProfileComponent } from &#x27;../edit-profile/edit-profile.component&#x27;;
+import { UserService } from &#x27;src/app/core/services/user.service&#x27;;
+import { User } from &#x27;src/app/core/models/user&#x27;;
+
+@Component({
+  // tslint:disable-next-line: component-selector
+  selector: &#x27;admin-profile-info&#x27;,
+  templateUrl: &#x27;./profile-info.component.html&#x27;,
+  styleUrls: [&#x27;./profile-info.component.scss&#x27;]
+})
+export class ProfileInfoComponent implements OnInit {
+
+  admin: User;
+  constructor(
+    public dialog: MatDialog,
+    private adminService: UserService) { }
+
+  ngOnInit(): void {
+    this.getAdmin();
+  }
+
+  onEdit(admin: User): void {
+  //   const dialogRef &#x3D; this.dialog.open(EditProfileComponent, {
+  //     disableClose: true,
+  //     autoFocus: true,
+  //     width: &#x27;35%&#x27;,
+  //     data: admin
+  //   });
+  //   dialogRef.afterClosed().subscribe(() &#x3D;&gt; this.getAdmin());
+  }
+
+  onResetPassword() {
+  //   const dialogRef &#x3D; this.dialog.open(ResetPasswordComponent, {
+  //     disableClose: true,
+  //     autoFocus: true,
+  //     width: &#x27;35%&#x27;,
+  //   });
+  //   dialogRef.afterClosed().subscribe(() &#x3D;&gt; this.getAdmin());
+  }
+
+  getAdmin() {
+    this.adminService.getUser().subscribe(
+      (data: User) &#x3D;&gt; {
+        this.admin &#x3D; data;
+      },
+      err &#x3D;&gt; console.log(err)
+    );
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;mat-card *ngIf&#x3D;&quot;admin&quot;&gt;
+  &lt;mat-card-content&gt;
+    &lt;mat-list role&#x3D;&quot;list&quot;&gt;
+      &lt;mat-list-item role&#x3D;&quot;listitem&quot;&gt;
+        &lt;mat-icon&gt;persons&lt;/mat-icon&gt;
+        &lt;p&gt;{{ admin.full_name }}&lt;/p&gt;
+      &lt;/mat-list-item&gt;
+      &lt;mat-list-item role&#x3D;&quot;listitem&quot;
+        &gt;&lt;mat-icon&gt;email&lt;/mat-icon&gt;
+        &lt;p&gt;{{ admin.email }}&lt;/p&gt;
+      &lt;/mat-list-item&gt;
+      &lt;mat-list-item role&#x3D;&quot;listitem&quot;
+        &gt;&lt;mat-icon&gt;phone&lt;/mat-icon&gt;
+        &lt;p&gt;{{ admin.phone }}&lt;/p&gt;
+      &lt;/mat-list-item&gt;
+    &lt;/mat-list&gt;
+  &lt;/mat-card-content&gt;
+  &lt;!-- &lt;mat-card-actions&gt;
+    &lt;button
+      class&#x3D;&quot;btn-edit&quot;
+      mat-raised-button
+      color&#x3D;&quot;primary&quot;
+      (click)&#x3D;&quot;onEdit(admin)&quot;
+    &gt;
+      Edit Profile
+    &lt;/button&gt;
+
+    &lt;button
+      class&#x3D;&quot;btn-edit&quot;
+      mat-raised-button
+      color&#x3D;&quot;accent&quot;
+      (click)&#x3D;&quot;onResetPassword()&quot;
+    &gt;
+      Reset Password
+    &lt;/button&gt;
+  &lt;/mat-card-actions&gt; --&gt;
+&lt;/mat-card&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./profile-info.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">mat-icon {
+  margin-right: 1rem;
+}
+
+p {
+  margin: 0 !important;
+  font-size: 20px;
+}
+
+mat-card-actions {
+  padding-left: 1rem;
+  padding-bottom: 1rem !important;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-card *ngIf="admin">  <mat-card-content>    <mat-list role="list">      <mat-list-item role="listitem">        <mat-icon>persons</mat-icon>        <p>{{ admin.full_name }}</p>      </mat-list-item>      <mat-list-item role="listitem"        ><mat-icon>email</mat-icon>        <p>{{ admin.email }}</p>      </mat-list-item>      <mat-list-item role="listitem"        ><mat-icon>phone</mat-icon>        <p>{{ admin.phone }}</p>      </mat-list-item>    </mat-list>  </mat-card-content>  <!-- <mat-card-actions>    <button      class="btn-edit"      mat-raised-button      color="primary"      (click)="onEdit(admin)"    >      Edit Profile    </button>    <button      class="btn-edit"      mat-raised-button      color="accent"      (click)="onResetPassword()"    >      Reset Password    </button>  </mat-card-actions> --></mat-card></div>'
+    var COMPONENTS = [{'name': 'ActivityComponent', 'selector': 'app-activity'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ApprovedRequestsComponent', 'selector': 'app-approved-requests'},{'name': 'BloodBankStaffComponent', 'selector': 'app-blood-bank-staff'},{'name': 'BloodProductComponent', 'selector': 'app-blood-product'},{'name': 'BloodProductsComponent', 'selector': 'app-blood-products'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DoctorComponent', 'selector': 'app-doctor'},{'name': 'DonorActivitesComponent', 'selector': 'app-donor-activites'},{'name': 'DonorActivitesComponent', 'selector': 'app-donor-activites'},{'name': 'DonorComponent', 'selector': 'app-donor'},{'name': 'DonorComponent', 'selector': 'app-donor'},{'name': 'DonorInfoComponent', 'selector': 'app-donor-info'},{'name': 'DonorsComponent', 'selector': 'app-donors'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HandleRequestComponent', 'selector': 'app-handle-request'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HospitalComponent', 'selector': 'app-hospital'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PatientComponent', 'selector': 'app-doctor-patient'},{'name': 'PatientComponent', 'selector': 'app-patient'},{'name': 'PatientInfoComponent', 'selector': 'app-patient-info'},{'name': 'PatientsComponent', 'selector': 'app-patients'},{'name': 'PatientsComponent', 'selector': 'app-patients'},{'name': 'ProductInfoComponent', 'selector': 'app-product-info'},{'name': 'ProfileInfoComponent', 'selector': 'admin-profile-info'},{'name': 'ProfileInfoComponent', 'selector': 'bbstaff-profile-info'},{'name': 'ProfileInfoComponent', 'selector': 'doctor-profile-info'},{'name': 'ProfileInfoComponent', 'selector': 'donor-profile-info'},{'name': 'ProfileInfoComponent', 'selector': 'hstaff-profile-info'},{'name': 'RequestComponent', 'selector': 'app-request'},{'name': 'RequestsComponent', 'selector': 'app-requests'},{'name': 'RequestsComponent', 'selector': 'app-requests'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'StudentComponent', 'selector': 'app-student'},{'name': 'StudentsComponent', 'selector': 'app-students'},{'name': 'UserComponent', 'selector': 'app-user'},{'name': 'UsersComponent', 'selector': 'app-users'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ProfileInfoComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ProfileInfoComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

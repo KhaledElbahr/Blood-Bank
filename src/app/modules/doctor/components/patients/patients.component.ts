@@ -37,7 +37,8 @@ export class PatientsComponent implements OnInit {
         console.log(data);
         this.patient = data;
         if (this.patient) {
-          this.router.navigate(['./patient', `${this.patient.id}`], { relativeTo: this.route });
+          this.router.navigate(['./patient'], { queryParams: { id: this.patient.id }, relativeTo: this.route });
+          // this.router.navigate(['./patient', `${this.patient.id}`], { relativeTo: this.route });
         }
       },
       err => console.log(err)

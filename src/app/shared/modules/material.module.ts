@@ -23,6 +23,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatChipsModule } from '@angular/material/chips';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [],
@@ -49,7 +50,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatRadioModule,
     MatNativeDateModule,
     MatSlideToggleModule,
-    MatChipsModule
+    MatChipsModule,
+    FlexLayoutModule
   ],
   exports: [
     CommonModule,
@@ -74,7 +76,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatRadioModule,
     MatNativeDateModule,
     MatSlideToggleModule,
-    MatChipsModule
+    MatChipsModule,
+    FlexLayoutModule
   ]
 })
 export class MaterialModule { }
