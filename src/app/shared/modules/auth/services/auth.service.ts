@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 interface AccessData {
   success: {
@@ -21,7 +22,7 @@ export class AuthService {
   USER_ID: number;
   ACCESS_TOKEN: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   isAuthenticated() {
     const promise = new Promise((resolve, reject) => {
@@ -35,7 +36,6 @@ export class AuthService {
   login(loginInfo): Observable<any> {
     return this.http.post('http://localhost:8000/api/login', loginInfo).pipe(
       map((data: AccessData) => {
-        // const userType = data.success.user_type;
         const access = {
           user_type: data.success.user_type,
           user_type_id: data.success.user_type_id,
@@ -70,12 +70,7 @@ export class AuthService {
   logout() {
     this.loggedIn = false;
     localStorage.removeItem('token');
-    this.isAuthenticated();
+    console.log('logged out');
+    this.router.navigate(['/']);
   }
-
-  // logout(): void {
-  //   this.isLoggedIn = false;
-  //   localStorage.removeItem('token');
-  //   this.router.navigate(['/login']);
-  // }
 }
