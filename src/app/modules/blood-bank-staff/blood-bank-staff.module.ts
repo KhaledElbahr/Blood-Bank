@@ -22,6 +22,7 @@ import { ProductInfoComponent } from './components/blood-products/product-info/p
 import { RequestsComponent } from './components/requests/requests.component';
 import { ApprovedRequestsComponent } from './components/approved-requests/approved-requests.component';
 import { HandleRequestComponent } from './components/requests/handle-request/handle-request.component';
+import { ExpiredProductsComponent } from './components/expired-products/expired-products.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { HandleRequestComponent } from './components/requests/handle-request/han
     ProductInfoComponent,
     RequestsComponent,
     ApprovedRequestsComponent,
-    HandleRequestComponent
+    HandleRequestComponent,
+    ExpiredProductsComponent
   ],
   imports: [
     CommonModule,

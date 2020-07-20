@@ -29,6 +29,16 @@ export class BloodProductService {
     );
   }
 
+  getExpiredProducts(): Observable<BloodProduct[]>{
+    return this.http.get<BloodProduct[]>('http://localhost:8000/api/expired_product', { headers: this.headers }).pipe(
+      map((data: BloodProduct[]) => {
+        console.log(data);
+        return data;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
   getProduct(Id: number): Observable<BloodProduct> {
     if (Id === 0) {
       return of(this.initializeProduct());

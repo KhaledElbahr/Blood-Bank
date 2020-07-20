@@ -72,4 +72,10 @@ export class AuthService {
     localStorage.removeItem('token');
     this.isAuthenticated();
   }
+
+  // logout(): void {
+  //   this.isLoggedIn = false;
+  //   localStorage.removeItem('token');
+  //   this.router.navigate(['/login']);
+  // }
 }

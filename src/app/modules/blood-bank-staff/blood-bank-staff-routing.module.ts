@@ -1,3 +1,4 @@
+import { ExpiredProductsComponent } from './components/expired-products/expired-products.component';
 import { HandleRequestComponent } from './components/requests/handle-request/handle-request.component';
 import { DonorInfoComponent } from './components/donors/donor-info/donor-info.component';
 import { BloodProductComponent } from './components/blood-products/blood-product/blood-product.component';
@@ -42,6 +43,7 @@ const bbRoutes: Routes = [
           { path: 'product', component: BloodProductComponent, canDeactivate: [] },
         ]
       },
+      { path: 'expired-products', component: ExpiredProductsComponent },
       {
         path: 'requests', component: RequestsComponent, children: [
           { path: 'handle-request', component: HandleRequestComponent, canDeactivate: [] },

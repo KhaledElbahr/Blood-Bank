@@ -30,6 +30,16 @@ export class DonorService {
     );
   }
 
+  getDonors(): Observable<Donor[]> {
+    return this.http.get<Donor[]>(`${this.url}`, { headers: this.headers }).pipe(
+      map((data: Donor[]) => {
+        console.log(data);
+        return data;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
   getDonor(Id: number): Observable<Donor> {
     if (Id === 0) {
       return of(this.initializeDonor());

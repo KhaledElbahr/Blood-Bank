@@ -19,7 +19,16 @@ export class PatientService {
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  getPatientById(Id: number) {
+  getPatients(): Observable<Patient[]>{
+    return this.http.get<Patient[]>(`${this.url}`, { headers: this.headers }).pipe(
+      map((data: Patient[]) => {
+        return data;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  getPatientById(Id: number): Observable<Patient>{
     if (Id === 0) {
       return of(this.initializePatient());
     }

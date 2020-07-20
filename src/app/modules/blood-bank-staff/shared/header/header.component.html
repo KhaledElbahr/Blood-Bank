@@ -26,17 +26,12 @@
     <span class="example-spacer"></span>
     <div>
       <ul>
-        <!-- <li>
-          <button mat-icon-button (click)="toggleThemeColor()">
-            <mat-icon>emoji_objects</mat-icon>
-          </button>
-        </li> -->
         <li>
           <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>person_outline</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item>
+            <button mat-menu-item (click)="logout()">
               <mat-icon>exit_to_app</mat-icon>
               logout
             </button>

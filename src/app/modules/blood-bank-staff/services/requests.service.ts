@@ -21,7 +21,7 @@ export class RequestsService {
     private auth: AuthService) { }
 
   getRequests(): Observable<Request[]> {
-    return this.http.get<Request[]>(`http://localhost:8000/api/request`, { headers: this.headers }).pipe(
+    return this.http.get<Request[]>('http://localhost:8000/api/request', { headers: this.headers }).pipe(
       map((data: Request[]) => {
         console.log(data);
         return data;
