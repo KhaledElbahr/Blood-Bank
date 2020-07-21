@@ -70,7 +70,8 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HandleRequestComponent } from &#x27;./components/requests/handle-request/handle-request.component&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ExpiredProductsComponent } from &#x27;./components/expired-products/expired-products.component&#x27;;
+import { HandleRequestComponent } from &#x27;./components/requests/handle-request/handle-request.component&#x27;;
 import { DonorInfoComponent } from &#x27;./components/donors/donor-info/donor-info.component&#x27;;
 import { BloodProductComponent } from &#x27;./components/blood-products/blood-product/blood-product.component&#x27;;
 import { BloodProductsComponent } from &#x27;./components/blood-products/blood-products.component&#x27;;
@@ -114,6 +115,7 @@ const bbRoutes: Routes &#x3D; [
           { path: &#x27;product&#x27;, component: BloodProductComponent, canDeactivate: [] },
         ]
       },
+      { path: &#x27;expired-products&#x27;, component: ExpiredProductsComponent },
       {
         path: &#x27;requests&#x27;, component: RequestsComponent, children: [
           { path: &#x27;handle-request&#x27;, component: HandleRequestComponent, canDeactivate: [] },

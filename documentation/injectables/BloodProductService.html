@@ -102,6 +102,9 @@
                                 <a href="#deleteProduct">deleteProduct</a>
                             </li>
                             <li>
+                                <a href="#getExpiredProducts">getExpiredProducts</a>
+                            </li>
+                            <li>
                                 <a href="#getProduct">getProduct</a>
                             </li>
                             <li>
@@ -221,8 +224,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="58"
-                            class="link-to-prism">src/app/modules/blood-bank-staff/services/blood-product.service.ts:58</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/app/modules/blood-bank-staff/services/blood-product.service.ts:68</a></div>
                 </td>
             </tr>
 
@@ -291,8 +294,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="83"
-                            class="link-to-prism">src/app/modules/blood-bank-staff/services/blood-product.service.ts:83</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">src/app/modules/blood-bank-staff/services/blood-product.service.ts:93</a></div>
                 </td>
             </tr>
 
@@ -343,6 +346,45 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="getExpiredProducts"></a>
+                    <span class="name">
+                        <b>
+                            getExpiredProducts
+                        </b>
+                        <a href="#getExpiredProducts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getExpiredProducts()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/app/modules/blood-bank-staff/services/blood-product.service.ts:32</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/BloodProduct.html" target="_self" >Observable&lt;BloodProduct[]&gt;</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="getProduct"></a>
                     <span class="name">
                         <b>
@@ -361,8 +403,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/app/modules/blood-bank-staff/services/blood-product.service.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/app/modules/blood-bank-staff/services/blood-product.service.ts:42</a></div>
                 </td>
             </tr>
 
@@ -431,8 +473,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="45"
-                            class="link-to-prism">src/app/modules/blood-bank-staff/services/blood-product.service.ts:45</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">src/app/modules/blood-bank-staff/services/blood-product.service.ts:55</a></div>
                 </td>
             </tr>
 
@@ -542,8 +584,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="108"
-                            class="link-to-prism">src/app/modules/blood-bank-staff/services/blood-product.service.ts:108</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="118"
+                            class="link-to-prism">src/app/modules/blood-bank-staff/services/blood-product.service.ts:118</a></div>
                 </td>
             </tr>
 
@@ -610,8 +652,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="93"
-                            class="link-to-prism">src/app/modules/blood-bank-staff/services/blood-product.service.ts:93</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">src/app/modules/blood-bank-staff/services/blood-product.service.ts:103</a></div>
                 </td>
             </tr>
 
@@ -649,8 +691,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="72"
-                            class="link-to-prism">src/app/modules/blood-bank-staff/services/blood-product.service.ts:72</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">src/app/modules/blood-bank-staff/services/blood-product.service.ts:82</a></div>
                 </td>
             </tr>
 
@@ -825,6 +867,16 @@ export class BloodProductService {
 
   getProducts(): Observable&lt;BloodProduct[]&gt; {
     return this.http.get&lt;BloodProduct[]&gt;(&#x60;${this.url}&#x60;, { headers: this.headers }).pipe(
+      map((data: BloodProduct[]) &#x3D;&gt; {
+        console.log(data);
+        return data;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  getExpiredProducts(): Observable&lt;BloodProduct[]&gt;{
+    return this.http.get&lt;BloodProduct[]&gt;(&#x27;http://localhost:8000/api/expired_product&#x27;, { headers: this.headers }).pipe(
       map((data: BloodProduct[]) &#x3D;&gt; {
         console.log(data);
         return data;

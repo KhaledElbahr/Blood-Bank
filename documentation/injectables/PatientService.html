@@ -108,6 +108,9 @@
                                 <a href="#getPatientBySSN">getPatientBySSN</a>
                             </li>
                             <li>
+                                <a href="#getPatients">getPatients</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Private</span>
                                 <a href="#handleError">handleError</a>
                             </li>
@@ -218,8 +221,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="47"
-                            class="link-to-prism">src/app/core/services/patient.service.ts:47</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/app/core/services/patient.service.ts:56</a></div>
                 </td>
             </tr>
 
@@ -288,8 +291,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="72"
-                            class="link-to-prism">src/app/core/services/patient.service.ts:72</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">src/app/core/services/patient.service.ts:81</a></div>
                 </td>
             </tr>
 
@@ -358,8 +361,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="22"
-                            class="link-to-prism">src/app/core/services/patient.service.ts:22</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/app/core/services/patient.service.ts:31</a></div>
                 </td>
             </tr>
 
@@ -396,7 +399,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>        <code><a href="../interfaces/Patient.html" target="_self" >Observable&lt;Patient&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -428,8 +431,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">src/app/core/services/patient.service.ts:35</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/app/core/services/patient.service.ts:44</a></div>
                 </td>
             </tr>
 
@@ -466,11 +469,50 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;Patient&gt;</code>
+                        <b>Returns : </b>        <code><a href="../interfaces/Patient.html" target="_self" >Observable&lt;Patient&gt;</a></code>
 
                     </div>
                     <div class="io-description">
                         
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPatients"></a>
+                    <span class="name">
+                        <b>
+                            getPatients
+                        </b>
+                        <a href="#getPatients"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPatients()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/app/core/services/patient.service.ts:22</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/Patient.html" target="_self" >Observable&lt;Patient[]&gt;</a></code>
+
                     </div>
                 </td>
             </tr>
@@ -500,8 +542,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="98"
-                            class="link-to-prism">src/app/core/services/patient.service.ts:98</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="107"
+                            class="link-to-prism">src/app/core/services/patient.service.ts:107</a></div>
                 </td>
             </tr>
 
@@ -568,8 +610,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="82"
-                            class="link-to-prism">src/app/core/services/patient.service.ts:82</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">src/app/core/services/patient.service.ts:91</a></div>
                 </td>
             </tr>
 
@@ -607,8 +649,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="61"
-                            class="link-to-prism">src/app/core/services/patient.service.ts:61</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">src/app/core/services/patient.service.ts:70</a></div>
                 </td>
             </tr>
 
@@ -781,7 +823,16 @@ export class PatientService {
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  getPatientById(Id: number) {
+  getPatients(): Observable&lt;Patient[]&gt;{
+    return this.http.get&lt;Patient[]&gt;(&#x60;${this.url}&#x60;, { headers: this.headers }).pipe(
+      map((data: Patient[]) &#x3D;&gt; {
+        return data;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  getPatientById(Id: number): Observable&lt;Patient&gt;{
     if (Id &#x3D;&#x3D;&#x3D; 0) {
       return of(this.initializePatient());
     }

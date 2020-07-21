@@ -137,7 +137,7 @@
                                 <a href="#donor">donor</a>
                             </li>
                             <li>
-                                <a href="#findDonor">findDonor</a>
+                                <a href="#HasDonor">HasDonor</a>
                             </li>
                             <li>
                                 <a href="#searchKey">searchKey</a>
@@ -555,7 +555,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/blood-bank-staff/components/donors/donors.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/blood-bank-staff/components/donors/donors.component.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -566,22 +566,22 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="findDonor"></a>
+                        <a name="HasDonor"></a>
                         <span class="name">
                             <b>
-                            findDonor</b>
-                            <a href="#findDonor"><span class="icon ion-ios-link"></span></a>
+                            HasDonor</b>
+                            <a href="#HasDonor"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>false</code>
+                            <i>Default value : </i><code>true</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/blood-bank-staff/components/donors/donors.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/blood-bank-staff/components/donors/donors.component.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -635,8 +635,8 @@ import { Donor } from &#x27;src/app/core/models/donor&#x27;;
 })
 export class DonorsComponent implements OnInit {
   searchKey: string;
-  findDonor &#x3D; false;
   donor: Donor;
+  HasDonor &#x3D; true;
 
   constructor(
     private donorService: DonorService,
@@ -672,11 +672,11 @@ export class DonorsComponent implements OnInit {
         if (this.donor) {
           this.router.navigate([&#x27;./find-donor&#x27;], { queryParams: { id: this.donor.id }, relativeTo: this.route });
         }
-        this.findDonor &#x3D; true;
+        this.HasDonor &#x3D; true;
       },
       err &#x3D;&gt; {
         console.log(err);
-        this.findDonor &#x3D; false;
+        this.HasDonor &#x3D; false;
       }
     );
   }
@@ -726,12 +726,12 @@ export class DonorsComponent implements OnInit {
 
 &lt;mat-divider&gt;&lt;/mat-divider&gt;
 &lt;br /&gt;
-&lt;div class&#x3D;&quot;profile&quot; *ngIf&#x3D;&quot;!(donor)&quot;&gt;
+&lt;div class&#x3D;&quot;profile&quot; *ngIf&#x3D;&quot;!(HasDonor)&quot;&gt;
   &lt;h2&gt;There is No Donor With This SSN&lt;/h2&gt;
 &lt;/div&gt;
-&lt;div class&#x3D;&quot;profile&quot; #donorInfo *ngIf&#x3D;&quot;donor; else addDonor&quot;&gt;
+&lt;div class&#x3D;&quot;profile&quot; #donorInfo *ngIf&#x3D;&quot;(donor &amp;&amp; HasDonor); else addDonor&quot;&gt;
   &lt;h2&gt;Donor Info:&lt;/h2&gt;
-  &lt;app-donor-info [donorInfo]&#x3D;&quot;donor&quot; &gt;&lt;/app-donor-info&gt;
+  &lt;app-donor-info [donorInfo]&#x3D;&quot;donor&quot;&gt;&lt;/app-donor-info&gt;
 &lt;/div&gt;
 &lt;ng-template #addDonor&gt;
   &lt;p&gt;Add New Donor&lt;/p&gt;
@@ -771,8 +771,8 @@ export class DonorsComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><h1>Donors</h1><br /><mat-divider></mat-divider><br /><div class="search-area">  <button mat-raised-button title="Create new donor" (click)="onCreate()">    <mat-icon>add</mat-icon>Create  </button>  <mat-form-field class="search-form-field" floatLabel="never">    <input      matInput      type="text"      [(ngModel)]="searchKey"      name="searchKey"      placeholder="Search By Civil Id..."      autocomplete="off"    />    <button      mat-button      matSuffix      mat-icon-button      aria-label="Clear"      *ngIf="searchKey"      (click)="onSearchClear()"    >      <mat-icon>close</mat-icon>    </button>  </mat-form-field>  <button    mat-button    aria-label="Search"    [disabled]="!searchKey"    (click)="applyFilter()"  >    Find Donor  </button></div><mat-divider></mat-divider><br /><div class="profile" *ngIf="!(donor)">  <h2>There is No Donor With This SSN</h2></div><div class="profile" #donorInfo *ngIf="donor; else addDonor">  <h2>Donor Info:</h2>  <app-donor-info [donorInfo]="donor" ></app-donor-info></div><ng-template #addDonor>  <p>Add New Donor</p></ng-template></div>'
-    var COMPONENTS = [{'name': 'ActivityComponent', 'selector': 'app-activity'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ApprovedRequestsComponent', 'selector': 'app-approved-requests'},{'name': 'BloodBankStaffComponent', 'selector': 'app-blood-bank-staff'},{'name': 'BloodProductComponent', 'selector': 'app-blood-product'},{'name': 'BloodProductsComponent', 'selector': 'app-blood-products'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DoctorComponent', 'selector': 'app-doctor'},{'name': 'DonorActivitesComponent', 'selector': 'app-donor-activites'},{'name': 'DonorActivitesComponent', 'selector': 'app-donor-activites'},{'name': 'DonorComponent', 'selector': 'app-donor'},{'name': 'DonorComponent', 'selector': 'app-donor'},{'name': 'DonorInfoComponent', 'selector': 'app-donor-info'},{'name': 'DonorsComponent', 'selector': 'app-donors'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HandleRequestComponent', 'selector': 'app-handle-request'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HospitalComponent', 'selector': 'app-hospital'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PatientComponent', 'selector': 'app-doctor-patient'},{'name': 'PatientComponent', 'selector': 'app-patient'},{'name': 'PatientInfoComponent', 'selector': 'app-patient-info'},{'name': 'PatientsComponent', 'selector': 'app-patients'},{'name': 'PatientsComponent', 'selector': 'app-patients'},{'name': 'ProductInfoComponent', 'selector': 'app-product-info'},{'name': 'ProfileInfoComponent', 'selector': 'admin-profile-info'},{'name': 'ProfileInfoComponent', 'selector': 'bbstaff-profile-info'},{'name': 'ProfileInfoComponent', 'selector': 'doctor-profile-info'},{'name': 'ProfileInfoComponent', 'selector': 'donor-profile-info'},{'name': 'ProfileInfoComponent', 'selector': 'hstaff-profile-info'},{'name': 'RequestComponent', 'selector': 'app-request'},{'name': 'RequestsComponent', 'selector': 'app-requests'},{'name': 'RequestsComponent', 'selector': 'app-requests'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'StudentComponent', 'selector': 'app-student'},{'name': 'StudentsComponent', 'selector': 'app-students'},{'name': 'UserComponent', 'selector': 'app-user'},{'name': 'UsersComponent', 'selector': 'app-users'}];
+        var COMPONENT_TEMPLATE = '<div><h1>Donors</h1><br /><mat-divider></mat-divider><br /><div class="search-area">  <button mat-raised-button title="Create new donor" (click)="onCreate()">    <mat-icon>add</mat-icon>Create  </button>  <mat-form-field class="search-form-field" floatLabel="never">    <input      matInput      type="text"      [(ngModel)]="searchKey"      name="searchKey"      placeholder="Search By Civil Id..."      autocomplete="off"    />    <button      mat-button      matSuffix      mat-icon-button      aria-label="Clear"      *ngIf="searchKey"      (click)="onSearchClear()"    >      <mat-icon>close</mat-icon>    </button>  </mat-form-field>  <button    mat-button    aria-label="Search"    [disabled]="!searchKey"    (click)="applyFilter()"  >    Find Donor  </button></div><mat-divider></mat-divider><br /><div class="profile" *ngIf="!(HasDonor)">  <h2>There is No Donor With This SSN</h2></div><div class="profile" #donorInfo *ngIf="(donor && HasDonor); else addDonor">  <h2>Donor Info:</h2>  <app-donor-info [donorInfo]="donor"></app-donor-info></div><ng-template #addDonor>  <p>Add New Donor</p></ng-template></div>'
+    var COMPONENTS = [{'name': 'ActivityComponent', 'selector': 'app-activity'},{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ApprovedRequestsComponent', 'selector': 'app-approved-requests'},{'name': 'BloodBankStaffComponent', 'selector': 'app-blood-bank-staff'},{'name': 'BloodProductComponent', 'selector': 'app-blood-product'},{'name': 'BloodProductsComponent', 'selector': 'app-blood-products'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DoctorComponent', 'selector': 'app-doctor'},{'name': 'DonorActivitesComponent', 'selector': 'app-donor-activites'},{'name': 'DonorActivitesComponent', 'selector': 'app-donor-activites'},{'name': 'DonorComponent', 'selector': 'app-donor'},{'name': 'DonorComponent', 'selector': 'app-donor'},{'name': 'DonorInfoComponent', 'selector': 'app-donor-info'},{'name': 'DonorsComponent', 'selector': 'app-donors'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'EditProfileComponent', 'selector': 'app-edit-profile'},{'name': 'ExpiredProductsComponent', 'selector': 'app-expired-products'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HandleRequestComponent', 'selector': 'app-handle-request'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HospitalComponent', 'selector': 'app-hospital'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'PageNotFoundComponent', 'selector': 'app-page-not-found'},{'name': 'PatientComponent', 'selector': 'app-doctor-patient'},{'name': 'PatientComponent', 'selector': 'app-patient'},{'name': 'PatientInfoComponent', 'selector': 'app-patient-info'},{'name': 'PatientsComponent', 'selector': 'app-patients'},{'name': 'PatientsComponent', 'selector': 'app-patients'},{'name': 'ProductInfoComponent', 'selector': 'app-product-info'},{'name': 'ProfileInfoComponent', 'selector': 'admin-profile-info'},{'name': 'ProfileInfoComponent', 'selector': 'bbstaff-profile-info'},{'name': 'ProfileInfoComponent', 'selector': 'doctor-profile-info'},{'name': 'ProfileInfoComponent', 'selector': 'donor-profile-info'},{'name': 'ProfileInfoComponent', 'selector': 'hstaff-profile-info'},{'name': 'RequestComponent', 'selector': 'app-request'},{'name': 'RequestsComponent', 'selector': 'app-requests'},{'name': 'RequestsComponent', 'selector': 'app-requests'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'StudentComponent', 'selector': 'app-student'},{'name': 'StudentsComponent', 'selector': 'app-students'},{'name': 'UserComponent', 'selector': 'app-user'},{'name': 'UsersComponent', 'selector': 'app-users'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'DonorsComponent'};
 </script>

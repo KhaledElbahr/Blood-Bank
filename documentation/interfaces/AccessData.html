@@ -130,6 +130,7 @@
 import { HttpClient } from &#x27;@angular/common/http&#x27;;
 import { Observable, of } from &#x27;rxjs&#x27;;
 import { map, catchError } from &#x27;rxjs/operators&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
 
 interface AccessData {
   success: {
@@ -149,7 +150,7 @@ export class AuthService {
   USER_ID: number;
   ACCESS_TOKEN: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   isAuthenticated() {
     const promise &#x3D; new Promise((resolve, reject) &#x3D;&gt; {
@@ -163,7 +164,6 @@ export class AuthService {
   login(loginInfo): Observable&lt;any&gt; {
     return this.http.post(&#x27;http://localhost:8000/api/login&#x27;, loginInfo).pipe(
       map((data: AccessData) &#x3D;&gt; {
-        // const userType &#x3D; data.success.user_type;
         const access &#x3D; {
           user_type: data.success.user_type,
           user_type_id: data.success.user_type_id,
@@ -198,7 +198,8 @@ export class AuthService {
   logout() {
     this.loggedIn &#x3D; false;
     localStorage.removeItem(&#x27;token&#x27;);
-    this.isAuthenticated();
+    console.log(&#x27;logged out&#x27;);
+    this.router.navigate([&#x27;/&#x27;]);
   }
 }
 </code></pre>

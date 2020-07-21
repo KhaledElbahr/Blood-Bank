@@ -248,7 +248,7 @@ export class LoginAuthGuard implements CanLoad{
 
   canLoad(route: Route): boolean | Promise&lt;boolean&gt; | Observable&lt;boolean&gt; {
     const url: string &#x3D; route.path;
-    console.log(&#x27;Url:&#x27; + url);
+    // console.log(&#x27;Url:&#x27; + url);
 
     return this.authService.isAuthenticated().then(
       (Authenticated: string) &#x3D;&gt; {
