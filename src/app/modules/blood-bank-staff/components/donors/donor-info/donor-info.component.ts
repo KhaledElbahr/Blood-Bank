@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DonorComponent } from '../donor/donor.component';
 import { ActivityComponent } from '../../donor-activites/activity/activity.component';
 import { Donor } from 'src/app/core/models/donor';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-donor-info',
@@ -19,6 +20,7 @@ export class DonorInfoComponent implements OnInit {
     private donorService: DonorService,
     private router: Router,
     private route: ActivatedRoute,
+    private notifyService: NotificationService,
     private dialog: MatDialog) { }
 
 
@@ -60,8 +62,8 @@ export class DonorInfoComponent implements OnInit {
   delete(donor: Donor) {
     this.donorService.deleteDonor(donor.id).subscribe(
       () => {
-        this.router.navigate(['./donors'], { relativeTo: this.route });
-        console.log('Donor Deleted Successfully');
+        // this.router.navigate(['../donors'], { relativeTo: this.route });
+        this.notifyService.notify('Deleted Successfully');
       },
       err => console.log(err)
     );

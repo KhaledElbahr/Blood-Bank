@@ -17,11 +17,6 @@ export class HeaderComponent {
     this.toggleSideBarForMe.emit();
   }
 
-  toggleThemeColor() {
-    console.log('Clicked!!!');
-    this.toggleTheme.emit();
-  }
-
   logout() {
     this.auth.logout();
   }

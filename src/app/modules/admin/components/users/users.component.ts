@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AdminService } from '../../services/admin.service';
 import { User } from 'src/app/core/models/user';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-users',
@@ -25,6 +26,7 @@ export class UsersComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public dialog: MatDialog,
+    private notifyService: NotificationService,
     private adminService: AdminService) { }
 
   ngOnInit() {
@@ -84,7 +86,10 @@ export class UsersComponent implements OnInit {
 
   delete(user: User) {
     this.adminService.deleteUser(user.id).subscribe(
-      () => this.getUsers(),
+      () => {
+        this.getUsers();
+        this.notifyService.notify('Deleted Successfully');
+      },
       err => console.log(err)
     );
   }

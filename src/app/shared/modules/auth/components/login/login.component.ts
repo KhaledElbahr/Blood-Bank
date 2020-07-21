@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute,
+    private notifyService: NotificationService,
     private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -35,17 +36,25 @@ export class LoginComponent implements OnInit {
           const USER_TYPE_ID: number = data.user_type_id;
           if (USER_TYPE_ID === 1) {
             this.router.navigate(['/admin']);
+            this.notifyService.notify('Logged In Successfully');
           } else if (USER_TYPE_ID === 2) {
             this.router.navigate(['/blood-bank']);
+            this.notifyService.notify('Logged In Successfully');
           } else if (USER_TYPE_ID === 3) {
             this.router.navigate(['/hospital']);
+            this.notifyService.notify('Logged In Successfully');
           } else if (USER_TYPE_ID === 4) {
             this.router.navigate(['/doctor']);
+            this.notifyService.notify('Logged In Successfully');
           } else if (USER_TYPE_ID === 5) {
             this.router.navigate(['/donor']);
+            this.notifyService.notify('Logged In Successfully');
           }
         },
-        err => { console.log(err); }
+        err => {
+          console.log(err);
+          this.notifyService.notify('Data is Invalid!!');
+         }
       );
     }
 

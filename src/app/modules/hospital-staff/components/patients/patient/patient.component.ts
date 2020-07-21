@@ -6,6 +6,7 @@ import { BoodGroupService } from 'src/app/core/services/bood-group.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Location } from '@angular/common';
 import { PatientService } from 'src/app/core/services/patient.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-patient',
@@ -35,12 +36,10 @@ export class PatientComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private location: Location,
-    private bloodService: BoodGroupService,
     private patientService: PatientService,
+    private notifyService: NotificationService,
     public dialogRef: MatDialogRef<PatientComponent>
   ) { }
-
-  // , Validators.pattern('(2|3)[0-9][1-9][0-1][1-9][0-3][1-9](01|02|03|04|11|12|13|14|15|16|17|18|19|21|22|23|24|25|26|27|28|29|31|32|33|34|35|88)\d\d\d\d\d)')
 
   ngOnInit(): void {
     this.patientForm = this.fb.group({
@@ -106,20 +105,17 @@ export class PatientComponent implements OnInit {
       const p = { ...this.patient, ...this.patientForm.value };
       if (p.id === 0) {
         this.patientService.addPatient(this.patientForm.value).subscribe(
-          data => {
+          () => {
             this.onClose();
-            // this.notifyService.notify(data.message);
-          },
-          // err => this.notifyService.notify(err)
+            this.notifyService.notify('Created Successfully');
+          }
         );
       } else {
         this.patientService.updatePatient(p).subscribe(
-          data => {
+          () => {
             this.onClose();
-            // this.notifyService.notify(data.message);
-
-          },
-          // err => this.notifyService.notify(err)
+            this.notifyService.notify('Updated Successfully');
+          }
         );
       }
     } else {
@@ -130,12 +126,9 @@ export class PatientComponent implements OnInit {
   applyNavigation() {
     this.patientForm.reset();
     this.location.back();
-    // this.router.navigate(['../Patients'], { queryParams: null, relativeTo: this.route });
   }
 
-  onCancel() {
-    this.onClose();
-  }
+  onCancel() { this.onClose(); }
 
   onClose(): void {
     this.dialogRef.close();
@@ -144,14 +137,4 @@ export class PatientComponent implements OnInit {
     });
   }
 
-
-  // getBloodGroups() {
-  //   this.bloodService.getBloodGroups().subscribe(
-  //     (data: { id: number, value: string }[]) => {
-  //       console.log(data);
-  //       this.bloodGroups = data;
-  //     },
-  //     err => console.log(err)
-  //   );
-  // }
 }

@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { BloodProductComponent } from '../blood-product/blood-product.component';
 import { BloodProductService } from '../../../services/blood-product.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-product-info',
@@ -18,13 +19,10 @@ export class ProductInfoComponent implements OnInit {
     private bloodProductService: BloodProductService,
     private router: Router,
     private route: ActivatedRoute,
+    private notifyService: NotificationService,
     private dialog: MatDialog) { }
 
   ngOnInit() { }
-
-  addProduct() {
-    console.log('Not Implemented Yet!!!');
-  }
 
   updateProduct(product: BloodProduct) {
     this.router.navigate(['./product'],
@@ -53,7 +51,7 @@ export class ProductInfoComponent implements OnInit {
     this.bloodProductService.deleteProduct(product.id).subscribe(
       () => {
         this.router.navigate(['../products'], { relativeTo: this.route });
-        console.log('Product Deleted Successfully');
+        this.notifyService.notify('Deleted Successfully');
       },
       err => console.log(err)
     );

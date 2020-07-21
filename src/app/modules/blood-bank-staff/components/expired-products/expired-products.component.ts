@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { BloodProductService } from '../../services/blood-product.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-expired-products',
@@ -25,6 +26,7 @@ export class ExpiredProductsComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
+    private notifyService: NotificationService,
     private bloodProductService: BloodProductService) { }
 
   ngOnInit() { this.getExpiredProducts(); }
@@ -46,7 +48,10 @@ export class ExpiredProductsComponent implements OnInit {
 
   deleteExpiredProducts(product: BloodProduct) {
     this.bloodProductService.deleteProduct(product.id).subscribe(
-      () => this.getExpiredProducts(),
+      () => {
+        this.getExpiredProducts();
+        this.notifyService.notify('Deleted Successfully');
+      },
       err => console.log(err)
     );
   }

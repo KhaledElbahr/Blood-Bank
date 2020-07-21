@@ -12,6 +12,7 @@ export class PatientsComponent implements OnInit {
   searchKey: string;
   findPatient = false;
   patient: Patient;
+  HasPatient = true;
   constructor(
     private patientService: PatientService,
     private router: Router,
@@ -34,14 +35,16 @@ export class PatientsComponent implements OnInit {
   getPatient(ssn: string) {
     this.patientService.getPatientBySSN(ssn).subscribe(
       (data: Patient) => {
-        console.log(data);
         this.patient = data;
         if (this.patient) {
           this.router.navigate(['./patient'], { queryParams: { id: this.patient.id }, relativeTo: this.route });
-          // this.router.navigate(['./patient', `${this.patient.id}`], { relativeTo: this.route });
         }
+        this.HasPatient = true;
       },
-      err => console.log(err)
+      err => {
+        console.log(err.error.message);
+        this.HasPatient = false;
+      }
     );
   }
 

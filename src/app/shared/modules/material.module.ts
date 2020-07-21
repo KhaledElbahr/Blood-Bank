@@ -23,6 +23,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -50,6 +51,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatRadioModule,
     MatNativeDateModule,
     MatSlideToggleModule,
+    MatSnackBarModule,
     MatChipsModule,
     FlexLayoutModule
   ],
@@ -77,6 +79,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatNativeDateModule,
     MatSlideToggleModule,
     MatChipsModule,
+    MatSnackBarModule,
     FlexLayoutModule
   ]
 })

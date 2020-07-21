@@ -42,7 +42,7 @@
 <div class="profile" *ngIf="!(HasPatient)">
   <h2>There is No Patient With This SSN</h2>
 </div>
-<div class="profile" #patientInfo *ngIf="(HasPatient); else addPatient">
+<div class="profile" #patientInfo *ngIf="(HasPatient && patient); else addPatient">
   <h2>Patient Info:</h2>
   <app-patient-info [patientInfo]="patient"></app-patient-info>
 </div>

@@ -5,41 +5,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RequestService } from './../../../services/request.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Location, formatDate } from '@angular/common';
-
-// import {
-//   NativeDateAdapter, DateAdapter,
-//   MAT_DATE_FORMATS
-// } from '@angular/material/core';
-// import { formatDate } from '@angular/common';
-
-// export const PICK_FORMATS = {
-//   parse: { dateInput: { month: 'short', year: 'numeric', day: 'numeric' } },
-//   display: {
-//     dateInput: 'input',
-//     monthYearLabel: { year: 'numeric', month: 'short' },
-//     dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
-//     monthYearA11yLabel: { year: 'numeric', month: 'long' }
-//   }
-// };
-
-// export class PickDateAdapter extends NativeDateAdapter {
-//   format(date: Date, displayFormat: Object): string {
-//     if (displayFormat === 'input') {
-//       return formatDate(date, 'Y-m-d', this.locale);
-//     } else {
-//       return date.toDateString();
-//     }
-//   }
-// }
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-request',
   templateUrl: './request.component.html',
   styleUrls: ['./request.component.scss'],
-  // providers: [
-  //   { provide: DateAdapter, useClass: PickDateAdapter },
-  //   { provide: MAT_DATE_FORMATS, useValue: PICK_FORMATS }
-  // ]
 })
 export class RequestComponent implements OnInit {
   pageTitle = 'Edit Request';
@@ -72,6 +43,7 @@ export class RequestComponent implements OnInit {
     private location: Location,
     private route: ActivatedRoute,
     private requestService: RequestService,
+    private notifyService: NotificationService,
     public dialogRef: MatDialogRef<RequestComponent>) {
     // Set the minimum to Current Date
     const currentDate = new Date();
@@ -141,6 +113,7 @@ export class RequestComponent implements OnInit {
         this.requestService.addRequest(this.requestForm.value).subscribe(
           data => {
             this.onClose();
+            this.notifyService.notify('Created Successfully');
           },
           err => console.log(err)
         );
@@ -148,6 +121,7 @@ export class RequestComponent implements OnInit {
         this.requestService.updateRequest(r).subscribe(
           data => {
             this.onClose();
+            this.notifyService.notify('Updated Successfully');
           },
           err => console.log(err)
         );

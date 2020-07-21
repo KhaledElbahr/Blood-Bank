@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AdminService } from '../../../services/admin.service';
 import { User } from 'src/app/core/models/user';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-user',
@@ -31,6 +32,7 @@ export class UserComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private adminService: AdminService,
+    private notifyService: NotificationService,
     public dialogRef: MatDialogRef<UserComponent>) { }
 
   ngOnInit(): void {
@@ -95,6 +97,7 @@ export class UserComponent implements OnInit {
         this.adminService.addUser(this.userForm.value).subscribe(
           data => {
             this.onClose();
+            this.notifyService.notify('Created Successfully');
           },
           err => console.log(err)
         );
@@ -102,6 +105,7 @@ export class UserComponent implements OnInit {
         this.adminService.updateUser(u).subscribe(
           data => {
             this.onClose();
+            this.notifyService.notify('Updated Successfully');
           },
           err => console.log(err)
         );

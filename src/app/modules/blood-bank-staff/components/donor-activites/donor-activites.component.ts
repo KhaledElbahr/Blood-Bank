@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DonorActivityService } from '../../../../core/services/donor-activity.service';
 import { BloodProductComponent } from '../blood-products/blood-product/blood-product.component';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 
 @Component({
@@ -45,6 +46,7 @@ export class DonorActivitesComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public dialog: MatDialog,
+    private notifyService: NotificationService,
     private donorActivityService: DonorActivityService) { }
 
   ngOnInit() {
@@ -102,7 +104,10 @@ export class DonorActivitesComponent implements OnInit {
 
   deleteRequest(activity: DonorActivity) {
     this.donorActivityService.deleteActivity(activity.id).subscribe(
-      () => this.getActivities(),
+      () => {
+        this.getActivities();
+        this.notifyService.notify('Deleted Successfully');
+      },
       err => console.log(err)
     );
   }

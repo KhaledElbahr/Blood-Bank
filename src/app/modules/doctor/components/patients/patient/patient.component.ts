@@ -1,7 +1,6 @@
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { PatientService } from '../../../services/patient.service';
 import { Patient } from 'src/app/core/models/patient';
 import { RequestComponent } from '../../requests/request/request.component';
 
@@ -33,8 +32,5 @@ export class PatientComponent implements OnInit {
       autoFocus: true,
       width: '35%',
     });
-    // dialogRef.afterClosed().subscribe(() => {
-    //   this.router.navigate(['../../requests'], { relativeTo: this.route });
-    // });
   }
 }

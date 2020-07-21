@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { BoodGroupService } from 'src/app/core/services/bood-group.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { BloodProductService } from '../../../services/blood-product.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-blood-product',
@@ -48,6 +48,7 @@ export class BloodProductComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private location: Location,
+    private notifyService: NotificationService,
     private bloodProductService: BloodProductService,
     public dialogRef: MatDialogRef<BloodProductComponent>
   ) { }
@@ -114,18 +115,15 @@ export class BloodProductComponent implements OnInit {
         this.bloodProductService.addProduct(this.bloodProductForm.value).subscribe(
           data => {
             this.onClose();
-            // this.notifyService.notify(data.message);
-          },
-          // err => this.notifyService.notify(err)
+            this.notifyService.notify('Created Successfully');
+          }
         );
       } else {
         this.bloodProductService.updateProduct(p).subscribe(
           data => {
             this.onClose();
-            // this.notifyService.notify(data.message);
-
-          },
-          // err => this.notifyService.notify(err)
+            this.notifyService.notify('Updated Successfully');
+          }
         );
       }
     } else {
@@ -138,9 +136,7 @@ export class BloodProductComponent implements OnInit {
     this.location.back();
   }
 
-  onCancel() {
-    this.onClose();
-  }
+  onCancel() { this.onClose(); }
 
   onClose(): void {
     this.dialogRef.close();

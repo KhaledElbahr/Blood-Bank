@@ -13,7 +13,7 @@ import { PatientService } from 'src/app/core/services/patient.service';
 export class PatientsComponent implements OnInit {
   searchKey: string;
   patient: Patient;
-  HasPatient: boolean;
+  HasPatient = true;
 
   constructor(
     private patientService: PatientService,
@@ -36,13 +36,9 @@ export class PatientsComponent implements OnInit {
   applyFilter() {
     const ssn = this.searchKey.trim().toLowerCase();
     this.getPatient(ssn);
-
   }
 
-  onSearchClear() {
-    this.searchKey = '';
-    // this.applyFilter();
-  }
+  onSearchClear() { this.searchKey = ''; }
 
   getPatient(ssn: string) {
     this.patientService.getPatientBySSN(ssn).subscribe(

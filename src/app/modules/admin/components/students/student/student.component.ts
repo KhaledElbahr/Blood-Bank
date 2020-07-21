@@ -7,6 +7,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { AuthService } from 'src/app/shared/modules/auth/services/auth.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-student',
@@ -24,6 +25,7 @@ export class StudentComponent implements OnInit {
     private location: Location,
     private http: HttpClient,
     private auth: AuthService,
+    private notifyService: NotificationService,
     public dialogRef: MatDialogRef<StudentComponent>) { }
 
   ngOnInit(): void { }
@@ -38,11 +40,11 @@ export class StudentComponent implements OnInit {
     return this.http.post('http://127.0.0.1:8000/api/import_excel/import/', uploadData, { headers: this.headers }).pipe(
       map((data: any) => data),
       catchError(err => throwError(err))
-    ).subscribe((data) => {
-      // this.notifyService.notify(data.message);
+    ).subscribe(() => {
+      this.notifyService.notify('Uploaded Successfully');
       this.onClose();
     },
-      // err => this.notifyService.notify(err)
+      err => this.notifyService.notify('Something goes wrong!!')
     );
   }
 

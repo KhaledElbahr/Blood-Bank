@@ -12,8 +12,8 @@ import { Donor } from 'src/app/core/models/donor';
 })
 export class DonorsComponent implements OnInit {
   searchKey: string;
-  findDonor = false;
   donor: Donor;
+  HasDonor = true;
 
   constructor(
     private donorService: DonorService,
@@ -49,11 +49,11 @@ export class DonorsComponent implements OnInit {
         if (this.donor) {
           this.router.navigate(['./find-donor'], { queryParams: { id: this.donor.id }, relativeTo: this.route });
         }
-        this.findDonor = true;
+        this.HasDonor = true;
       },
       err => {
         console.log(err);
-        this.findDonor = false;
+        this.HasDonor = false;
       }
     );
   }

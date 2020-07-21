@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@ang
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RequestsService } from '../../../services/requests.service';
 import { Location } from '@angular/common';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-handle-request',
@@ -18,6 +19,7 @@ export class HandleRequestComponent implements OnInit {
     private fb: FormBuilder,
     private location: Location,
     private requestService: RequestsService,
+    private notifyService: NotificationService,
     public dialogRef: MatDialogRef<HandleRequestComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
     this.request = data;
@@ -48,8 +50,9 @@ export class HandleRequestComponent implements OnInit {
       this.requestService.confirmRequest(this.handleRequestForm.value).subscribe(
         data => {
           this.onClose();
+          this.notifyService.notify('Handled Successfully');
         },
-        err => console.log(err)
+        err => this.notifyService.notify('Something goes wrong!!')
       );
     } else {
       this.applyNavigation();

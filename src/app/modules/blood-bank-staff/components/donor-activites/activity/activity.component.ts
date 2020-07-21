@@ -5,6 +5,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Location } from '@angular/common';
 import { DonorActivity } from '../../../../../core/models/donor-activity';
 import { DonorActivityService } from '../../../../../core/services/donor-activity.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-activity',
@@ -18,14 +19,6 @@ export class ActivityComponent implements OnInit {
   donorId: number;
   hasViruses: boolean;
 
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private route: ActivatedRoute,
-    private location: Location,
-    private donorActivityService: DonorActivityService,
-    public dialogRef: MatDialogRef<ActivityComponent>
-  ) { }
   statuses = [
     { id: 1, value: 'accepted' },
     { id: 2, value: 'rejected' }
@@ -49,13 +42,23 @@ export class ActivityComponent implements OnInit {
   ];
 
   DonorViruses = [
-    { id: 1, value: 'HIV' },
-    { id: 2, value: 'HEPATITIS A' },
-    { id: 3, value: 'HEPATITIS B' },
-    { id: 4, value: 'HEPATITIS C' },
-    { id: 5, value: 'H1N1' },
-    { id: 6, value: 'COVID-19' }
+    { id: 1, name: 'HIV' },
+    { id: 2, name: 'HEPATITIS A' },
+    { id: 3, name: 'HEPATITIS B' },
+    { id: 4, name: 'HEPATITIS C' },
+    { id: 5, name: 'H1N1' },
+    { id: 6, name: 'COVID-19' }
   ];
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    private location: Location,
+    private notifyService: NotificationService,
+    private donorActivityService: DonorActivityService,
+    public dialogRef: MatDialogRef<ActivityComponent>
+  ) { }
 
   ngOnInit(): void {
     // Read the activity & donor Id from the route parameter
@@ -137,18 +140,15 @@ export class ActivityComponent implements OnInit {
             this.dialogRef.afterClosed().subscribe(result => {
               this.router.navigate(['./blood-bank/activities'], { queryParams: null, relativeTo: this.route });
             });
-            // this.notifyService.notify(data.message);
-          },
-          // err => this.notifyService.notify(err)
+            this.notifyService.notify('Created Successfully');
+          }
         );
       } else {
         this.donorActivityService.updateActivity(a).subscribe(
           data => {
             this.onClose();
-            // this.notifyService.notify(data.message);
-
-          },
-          // err => this.notifyService.notify(err)
+            this.notifyService.notify('Updated Successfully');
+          }
         );
       }
     } else {

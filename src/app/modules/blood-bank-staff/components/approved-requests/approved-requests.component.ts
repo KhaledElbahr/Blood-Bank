@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Request } from './../../../../core/models/request';
 import { RequestsService } from '../../services/requests.service';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-approved-requests',
@@ -31,9 +31,8 @@ export class ApprovedRequestsComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
     public dialog: MatDialog,
+    private notifyService: NotificationService,
     private requestsService: RequestsService) { }
 
   ngOnInit() {
@@ -60,7 +59,10 @@ export class ApprovedRequestsComponent implements OnInit {
 
   deleteRequest(request: Request) {
     this.requestsService.deleteHandledRequest(request.id).subscribe(
-      () => this.getApprovedRequests(),
+      () => {
+        this.getApprovedRequests();
+        this.notifyService.notify('Deleted Successfully');
+      },
       err => console.log(err)
     );
   }

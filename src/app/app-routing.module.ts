@@ -6,7 +6,6 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  // { path: 'change-password', component: ChangePasswordComponent },
   {
     path: 'admin',
     canLoad: [LoginAuthGuard],

@@ -34,7 +34,7 @@
 <div class="profile" *ngIf="!hasProduct">
   <h2>There is No such Product</h2>
 </div>
-<div class="profile" #productInfo *ngIf="hasProduct; else addProduct">
+<div class="profile" #productInfo *ngIf="(product && hasProduct); else addProduct">
   <h2>Product Info:</h2>
   <app-product-info [productInfo]="product"></app-product-info>
 </div>

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
-import { BoodGroupService } from 'src/app/core/services/bood-group.service';
 import { DonorService } from '../../../../../core/services/donor.service';
 import { Location } from '@angular/common';
 import { Donor } from 'src/app/core/models/donor';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-donor',
@@ -36,8 +36,8 @@ export class DonorComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private location: Location,
-    private bloodService: BoodGroupService,
     private donorService: DonorService,
+    private notifyService: NotificationService,
     public dialogRef: MatDialogRef<DonorComponent>
   ) { }
 
@@ -46,14 +46,10 @@ export class DonorComponent implements OnInit {
       first_name: [null, Validators.required],
       last_name: [null, Validators.required],
       ssn: [null, Validators.required],
-      // tslint:disable-next-line:max-line-length
-      // Validators.pattern('(2|3)[0-9][1-9][0-1][1-9][0-3][1-9](01|02|03|04|11|12|13|14|15|16|17|18|19|21|22|23|24|25|26|27|28|29|31|32|33|34|35|88)\d\d\d\d\d\
-      //   ')]],
       gender: [null, Validators.required],
       blood_group_id: [null, Validators.required],
       email: [null],
       phone: [null, [Validators.required, Validators.maxLength(11)]],
-      // address: [null]
     });
 
     // Read the Donor Id from the route parameter
@@ -72,7 +68,6 @@ export class DonorComponent implements OnInit {
   get blood_group_id() { return this.donorForm.get('blood_group_id'); }
   get email() { return this.donorForm.get('email'); }
   get phone() { return this.donorForm.get('phone'); }
-  // get address() { return this.donorForm.get('address'); }
 
   getDonor(id: number): void {
     this.donorService.getDonor(id).subscribe({
@@ -101,7 +96,6 @@ export class DonorComponent implements OnInit {
         blood_group_id: this.donor.blood_group_id,
         email: this.donor.email,
         phone: this.donor.phone,
-        // address: this.donor.address,
       }
     );
   }
@@ -115,18 +109,15 @@ export class DonorComponent implements OnInit {
         this.donorService.addDonor(this.donorForm.value).subscribe(
           data => {
             this.onClose();
-            // this.notifyService.notify(data.message);
-          },
-          // err => this.notifyService.notify(err)
+            this.notifyService.notify('Created Successfully');
+          }
         );
       } else {
         this.donorService.updateDonor(d).subscribe(
           data => {
             this.onClose();
-            // this.notifyService.notify(data.message);
-
-          },
-          // err => this.notifyService.notify(err)
+            this.notifyService.notify('Updated Successfully');
+          }
         );
       }
     } else {

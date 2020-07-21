@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { RequestsService } from '../../services/requests.service';
 import { Request } from './../../../../core/models/request';
 import { HandleRequestComponent } from './handle-request/handle-request.component';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-requests',
@@ -35,6 +36,7 @@ export class RequestsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public dialog: MatDialog,
+    private notifyService: NotificationService,
     private requestsService: RequestsService) { }
 
   ngOnInit() {
@@ -85,7 +87,10 @@ export class RequestsComponent implements OnInit {
 
   deleteRequest(rejectedRequest) {
     this.requestsService.confirmRequest(rejectedRequest).subscribe(
-      () => this.getRequests(),
+      () => {
+        this.getRequests();
+        this.notifyService.notify('Deleted Successfully');
+      },
       err => console.log(err)
     );
   }

@@ -15,7 +15,7 @@ export class BloodProductsComponent implements OnInit {
   searchKey: string;
   findProduct = false;
   product: BloodProduct;
-  hasProduct: Observable<boolean>;
+  hasProduct = true;
   constructor(
     private bloodProductService: BloodProductService,
     private router: Router,
@@ -51,11 +51,11 @@ export class BloodProductsComponent implements OnInit {
         if (this.product) {
           this.router.navigate(['./product'],  { queryParams: {id: this.product.id}, relativeTo: this.route });
         }
-        this.hasProduct = of(true);
+        this.hasProduct = true;
       },
       err => {
         console.log(err);
-        this.hasProduct = of(false);
+        this.hasProduct = false;
       }
     );
   }

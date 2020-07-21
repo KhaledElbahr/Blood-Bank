@@ -4,6 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Patient } from 'src/app/core/models/patient';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PatientComponent } from '../patient/patient.component';
+import { NotificationService } from 'src/app/core/services/notification.service';
 
 @Component({
   selector: 'app-patient-info',
@@ -18,6 +19,7 @@ export class PatientInfoComponent implements OnInit {
     private patientService: PatientService,
     private router: Router,
     private route: ActivatedRoute,
+    private notifyService: NotificationService,
     private dialog: MatDialog) { }
 
 
@@ -44,7 +46,7 @@ export class PatientInfoComponent implements OnInit {
 
   delete(patient: Patient) {
     this.patientService.deletePatient(patient.id).subscribe(
-      () => console.log('Patient Deleted Successfully'),
+      () => this.notifyService.notify('Deleted Successfully'),
       err => console.log(err)
     );
   }
